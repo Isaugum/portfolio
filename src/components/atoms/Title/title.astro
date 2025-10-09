@@ -1,0 +1,13 @@
+---
+import './title.scss';
+const { level = 1, title = "", class: className = "" } = Astro.props;
+const Tag = `h${level}`;
+
+if(!title) {
+    throw new Error('Title param is required.');
+}
+---
+
+<Fragment>
+    <Tag class={`title-${Tag}`}>{title}</Tag>
+</Fragment>

@@ -1,0 +1,24 @@
+@use '../../../scss/main.scss' as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &__nav {
+    padding: 2rem 3rem;
+  }
+
+  &__link {
+    font-size: 1.2rem;
+
+    margin: 0 1rem;
+    &:first-of-type {
+      margin: 0 1rem 0 0;
+    }
+
+    &:last-of-type {
+      margin: 0 0 0 1rem;
+    }
+  }
+}

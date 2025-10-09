@@ -1,0 +1,81 @@
+@use '../../../scss/main.scss' as *;
+
+.home {
+
+  .main {
+    @include flexbox(column, center, start);
+
+    padding: 0 8rem;
+
+
+    &__title {
+      font-size: 5rem;
+
+      color: $details;
+    }
+
+    &__subtitle {
+      width: 50rem;
+
+      font-size: 2.5rem;
+
+      color: $neutral;
+    }
+
+    &__text {
+      width: 50rem;
+
+      font-size: 1.2rem;
+
+      margin: 2rem 0;
+    }
+
+    &__btn {
+      font-size: 1.5rem;
+
+      padding: 1rem 2rem;
+
+      color: $accent;
+      background-color: $highlight;
+
+      border-radius: 20px;
+    }
+  }
+
+  .hero {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    overflow: hidden;
+
+    height: 100vh;
+    width: 100vw;
+
+    &__image {
+      position: absolute;
+      right: -2rem;
+      //bottom: 5rem;
+      height: 100%;
+      opacity: 0.7;
+    }
+
+    &__glow {
+      position: absolute;
+
+      right: -12.8rem;
+      top: -2rem;
+
+      width: 60rem;
+      height: 60rem;
+
+      background: radial-gradient(
+                      ellipse at top,
+                      rgba($neutral, 0.5),
+                      transparent 70%
+      );
+
+      filter: blur(50px);
+    }
+  }
+}

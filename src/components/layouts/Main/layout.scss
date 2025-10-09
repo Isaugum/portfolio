@@ -1,0 +1,9 @@
+@use '../../../scss/main.scss' as *;
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+
+  @include flexbox(column, start, start, 0);
+}

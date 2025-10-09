@@ -1,0 +1,20 @@
+$breakpoints: (
+        'xs': 480px,
+        'sm': 640px,
+        'md': 768px,
+        'lg': 1024px,
+        'xl': 1280px,
+        'xxl': 1536px
+);
+
+@mixin min-width($size) {
+  $width: map-get($breakpoints, $size);
+
+  @if $width {
+    @media (min-width: $width) {
+      @content;
+    }
+  } @else {
+    @warn "No breakpoint defined for `#{$size}`.";
+  }
+}
