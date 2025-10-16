@@ -1,0 +1,8 @@
+---
+import './Anchor.scss';
+const { href, className, } = Astro.props;
+---
+
+<a class={`anchor ${className ?? ''}`} href={href}>
+    <slot />
+</a>

@@ -1,0 +1,22 @@
+$space-scale: (
+  xs: 0.25rem,
+  sm: 0.5rem,
+  md: 1rem,
+  lg: 2rem,
+  xl: 4rem,
+);
+
+@each $name, $size in $space-scale {
+  .m-#{$name}  { margin: $size !important; }
+  .p-#{$name}  { padding: $size !important; }
+
+  .mt-#{$name} { margin-top: $size !important; }
+  .mb-#{$name} { margin-bottom: $size !important; }
+  .ml-#{$name} { margin-left: $size !important; }
+  .mr-#{$name} { margin-right: $size !important; }
+
+  .pt-#{$name} { padding-top: $size !important; }
+  .pb-#{$name} { padding-bottom: $size !important; }
+  .pl-#{$name} { padding-left: $size !important; }
+  .pr-#{$name} { padding-right: $size !important; }
+}

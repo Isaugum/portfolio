@@ -1,0 +1,11 @@
+@use "variables" as vars;
+
+@each $theme-name, $theme-map in vars.$colors {
+  [data-theme="#{$theme-name}"] {
+    @each $key, $value in $theme-map {
+      --color-#{$key}: #{$value};
+    }
+    --font-heading: 'VT323', monospace;
+    --font-body: 'IBM Plex Mono', monospace;
+  }
+}

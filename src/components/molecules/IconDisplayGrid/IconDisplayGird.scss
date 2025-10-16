@@ -1,0 +1,29 @@
+.tech-content {
+    // padding: 0 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__title {
+        font-size: 1.2rem;
+    }
+
+    &__container {
+        // display: flex;
+        // justify-content: start;
+        // align-items: center;
+
+        display: grid;
+        grid-template-columns: repeat(4, 4rem);
+        gap: 1rem;
+
+        margin: 1rem 0;
+    }
+
+    &__icon {
+        height: 2.5rem;
+
+        fill: var(--color-accent);
+        fill-opacity: 0.7;
+    }
+}

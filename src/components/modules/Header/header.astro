@@ -1,14 +1,26 @@
 ---
+import Anchor from '@components/atoms/Anchor/Anchor.astro';
 import './header.scss';
+import { NAV_ELEMENTS } from './header.content'; 
 ---
 
-<header class="header">
-    <nav class="header__nav">
-        <a class="header__link">ABOUT</a>
-        <a class="header__link">SKILLS</a>
-        <a class="header__link">TIMELINE</a>
-        <a class="header__link">PROJECTS</a>
-        <a class="header__link">OTHER</a>
-        <a class="header__link">CONTACT</a>
+<header class="header hidden">
+    <!-- <div class="header__logo">
+        <img src="logo.svg" />
+    </div> -->
+    <nav class="nav">
+        {
+            NAV_ELEMENTS.map((elem: { text: string, href: string }) => {
+                return <Anchor className="nav__link" href={elem.href}>{elem.text}</Anchor>
+            })
+        }
     </nav>
 </header>
+
+<script>
+    import { initHeader } from './header.ts';
+
+    window.addEventListener('DOMContentLoaded', () => {
+        initHeader();
+    });
+</script>

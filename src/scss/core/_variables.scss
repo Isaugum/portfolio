@@ -1,0 +1,18 @@
+$base-bg: #0b0b0b;
+$base-text: #e6e6e6;
+$base-accent: #00ffaa;
+
+
+$colors: (
+  light: (
+    background: $base-bg,
+    text-main: $base-text,
+    accent: $base-accent,
+  ),
+  dark: (
+    background: $base-bg,
+    text-main: $base-text,
+    accent: $base-accent,
+    accent-darker: darken($base-accent, 40%)
+  )
+);

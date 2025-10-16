@@ -1,0 +1,35 @@
+.anchor {
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+
+  &::before {
+    content: '';
+    display: inline-block;
+    margin-left: 0.4em;
+    width: 0;
+    height: 0;
+    margin-right: 0.6em;
+    border-top: 0.35em solid transparent;
+    border-bottom: 0.35em solid transparent;
+    border-left: 0.35em solid currentColor;
+    opacity: 0;
+    transform: translateX(-0.25em);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  
+    filter: drop-shadow(0 0 3px var(--color-accent));
+  }
+
+  &:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &:hover::before,
+  &.selected::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

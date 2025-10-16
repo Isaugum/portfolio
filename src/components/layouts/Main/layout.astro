@@ -1,22 +1,21 @@
 ---
-import '../../../scss/main.scss';
-import './layout.scss';
+import '@styles/main.scss';
+import './Layout.scss';
 import Header from "../../modules/Header/header.astro";
 import Footer from "../../modules/Footer/footer.astro";
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
-    <body class="main">
+    <body>
         <Header />
-        <slot />
+            <slot />
         <Footer />
     </body>
-</html>
+</html> 

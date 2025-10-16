@@ -1,9 +1,12 @@
-@use '../../../scss/main.scss' as *;
+body {
+    display: flex;
+    flex-direction: column;
+    
+    overflow-y: auto;
 
-.main {
-  height: 100vh;
-  width: 100vw;
-  overflow-y: auto;
+    color: var(--color-text-main);
+    background-color: var(--color-background);
 
-  @include flexbox(column, start, start, 0);
+    font-family: var(--font-body);
+    text-shadow: 0 0 5px var(--color-accent);
 }

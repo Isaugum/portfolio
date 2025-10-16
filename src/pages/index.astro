@@ -1,10 +1,12 @@
 ---
-import Layout from '../components/layouts/Main/layout.astro';
-import Home from "../components/pages/Home/home.astro";
+import Layout from "@components/layouts/Main/layout.astro";
+import Home from "@components/pages/Home/home.astro";
+import About from "@components/modules/About/About.astro";
+
+
 ---
 
-<html lang="en">
-	<Layout title="Home">
-		<Home />
-	</Layout>
-</html>
+<Layout title="Home">
+	<Home />
+	<About />
+</Layout>

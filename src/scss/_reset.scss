@@ -4,6 +4,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  user-select: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Remove default list styles */
@@ -34,12 +39,13 @@ input, button, textarea, select {
 /* Basic body setup */
 body {
   line-height: 1.5;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background-color: $anchor; // optional, use your variables
-  color: $accent;
 }
 
 /* Reset headings if needed */
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
+}
+
+button {
+  cursor: pointer;
 }
