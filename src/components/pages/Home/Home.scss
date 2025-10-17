@@ -32,21 +32,18 @@
         }
         
         &__title {
-            font-size: 6rem;
             font-family: var(--font-header);
             font-weight: 700;
             letter-spacing: 0.7rem;
         }
 
         &__subtitle {
-            font-size: 1.8rem;
             color: var(--color-text);
         }
 
         &__cta {
             margin-top: 7rem;
 
-            font-size: 1.5rem;
             color: var(--color-text);
         }
     }

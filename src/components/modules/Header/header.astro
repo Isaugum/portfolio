@@ -11,7 +11,7 @@ import { NAV_ELEMENTS } from './header.content';
     <nav class="nav">
         {
             NAV_ELEMENTS.map((elem: { text: string, href: string }) => {
-                return <Anchor className="nav__link" href={elem.href}>{elem.text}</Anchor>
+                return <Anchor className="nav__link text--h3" href={elem.href}>{elem.text}</Anchor>
             })
         }
     </nav>

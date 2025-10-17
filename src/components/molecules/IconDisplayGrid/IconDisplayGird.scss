@@ -4,10 +4,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
-    &__title {
-        font-size: 1.2rem;
-    }
-
     &__container {
         // display: flex;
         // justify-content: start;
