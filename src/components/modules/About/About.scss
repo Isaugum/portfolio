@@ -29,7 +29,6 @@
         );
 
         &__image {
-
             &-container {
                 height: 100%;
                 display: flex;
@@ -44,7 +43,7 @@
 
         &__info {
             flex-grow: 1;
-            
+
             display: grid;
             grid-template-columns: 1fr auto;
             row-gap: 0.8rem;
