@@ -1,25 +1,16 @@
 #about {
     height: 90vh;
-    width: 100%;
 
     text-shadow: none;
 
     .about-container {
         height: 100%;
 
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: 1fr auto;
-        gap: 2rem;
+        overflow: hidden;
 
-        padding: 2rem 0 4rem 0;
-        margin: 3rem;
     }
 
     .about-content {
-        width: 100%;
-
-        padding: 1.7rem 1.7rem;
 
         border: 2px solid var(--color-accent-darker);
         border-radius: 2rem;
@@ -37,6 +28,7 @@
             }
             
             // flex-grow: 1;
+            width: 10rem;
             margin: auto;
             border-radius: 1rem;
         }

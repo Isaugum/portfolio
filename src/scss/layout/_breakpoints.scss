@@ -6,11 +6,23 @@ $breakpoints: (
   2xl: 1536px,
 );
 
-@mixin respond($bp) {
+@mixin min-width($bp) {
   $size: map-get($breakpoints, $bp);
 
   @if $size {
     @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$bp}";
+  }
+}
+
+@mixin max-width($bp) {
+  $size: map-get($breakpoints, $bp);
+
+  @if $size {
+    @media (max-width: $size) {
       @content;
     }
   } @else {

@@ -1,16 +1,22 @@
-
+@use '../../../scss/layout/breakpoints' as br;
+ 
 .header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 8vh;
 
     z-index: 1000;
+    overflow: hidden;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include br.max-width(md) {
+      display: none;
+    }
 
     background-color: var(--color-background);
     background-image: repeating-linear-gradient(
