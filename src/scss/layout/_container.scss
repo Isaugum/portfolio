@@ -29,8 +29,11 @@
         &__key {
             position: relative;
 
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+    
             color: var(--color-accent);
-            font-size: 1rem;    
+            font-size: 0.8rem;    
 
             &::after {
                 content: '';
@@ -45,8 +48,7 @@
         }
 
         &__value {
-            margin: 1rem 0;
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
     }
 }
