@@ -16,28 +16,32 @@
         justify-content: center;
         align-items: center;
         
-
         padding: 2rem;
 
-        &::after {
-            content: '';
-            position: absolute;
-            left: -1rem;
-            width: 100vw;
-            height: 1px;
-            background-color: var(--color-accent);
-            opacity: 0.2;
-            bottom: 0;
-          }
+        box-shadow: 0 0 2rem 1rem var(--color-accent-darker);
+
+        // &::after {
+        //     content: '';
+        //     position: absolute;
+        //     left: -1rem;
+        //     width: 100vw;
+        //     height: 1px;
+        //     background-color: var(--color-accent);
+        //     opacity: 0.2;
+        //     bottom: 0;
+        //   }
 
         &__content {
             text-align: center;
         }
         
         &__title {
+            color: var(--color-accent);
+
+            font-size: 1rem;
             font-family: var(--font-header);
             font-weight: 700;
-            letter-spacing: 0.7rem;
+            letter-spacing: 0.8rem;
         }
 
         &__subtitle {
