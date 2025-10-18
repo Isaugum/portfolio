@@ -1,0 +1,8 @@
+.grid {
+    display: grid;
+    place-items: center;
+
+    &--main {
+        grid-template-columns: auto;
+    }
+}

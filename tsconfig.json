@@ -22,7 +22,10 @@
       ],
       "@components/*": [
         "./src/components/*"
-      ]
+      ],
+      "@style_components/*": [
+        "./src/scss/components/*"
+      ],
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

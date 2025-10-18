@@ -13,10 +13,13 @@ export default defineConfig({
         resolve: {
             alias: { 
               '@styles': path.resolve('./src/scss'),
+              '@layout': path.resolve('./src/scss/layout'),
+              '@style_components': path.resolve('./src/scss/components'),
+              '@core': path.resolve('./src/scss/core'),
               '@utils': path.resolve('./src/utils'),
               '@components': path.resolve('./src/components')
             },
-        }
+        },
     },
     integrations: [react()],
 });
