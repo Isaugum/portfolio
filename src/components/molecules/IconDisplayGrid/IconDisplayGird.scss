@@ -8,6 +8,11 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
+    &__section-title {
+        width: 100%;
+        text-align: center; 
+    }
+
     &__title {
         width: 100%;
         text-align: center;
