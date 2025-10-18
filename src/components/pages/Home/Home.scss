@@ -5,6 +5,7 @@
         rgba(255, 255, 255, 0.03) 0px,
         rgba(0, 0, 0, 0.03) 2px
     );
+    box-shadow: 0 0 3rem 0 var(--color-accent-darker);
 
     .hero {
         height: 100%;
@@ -18,24 +19,13 @@
         
         padding: 2rem;
 
-        box-shadow: 0 0 2rem 1rem var(--color-accent-darker);
-
-        // &::after {
-        //     content: '';
-        //     position: absolute;
-        //     left: -1rem;
-        //     width: 100vw;
-        //     height: 1px;
-        //     background-color: var(--color-accent);
-        //     opacity: 0.2;
-        //     bottom: 0;
-        //   }
-
         &__content {
             text-align: center;
         }
         
         &__title {
+            margin-left: 10px;
+        
             color: var(--color-accent);
 
             font-size: 1rem;
@@ -45,6 +35,8 @@
         }
 
         &__subtitle {
+            text-align: center;
+
             color: var(--color-text);
         }
 

@@ -33,7 +33,9 @@
             padding-bottom: 0.5rem;
     
             color: var(--color-accent);
-            font-size: 0.8rem;    
+            font-size: 0.8rem;
+
+            text-transform: capitalize;
 
             &::after {
                 content: '';
