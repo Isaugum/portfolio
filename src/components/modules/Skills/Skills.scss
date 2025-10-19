@@ -1,0 +1,29 @@
+@use '@layout/breakpoints' as br;
+
+#skills {
+    text-shadow: none;
+
+    margin-bottom: 4rem;
+
+    @include br.min-width(md) {
+        scroll-margin-top: 3rem;
+    }
+
+    .skills {
+
+        &__title {
+            width: 100%;
+            text-align: center;
+        
+            margin-bottom: 1rem;
+        }
+
+        &__text {
+            padding: 1rem 2rem;
+
+            @include br.min-width(lg) {
+                padding: 1rem 8rem 1rem 8rem;
+            }
+        }
+    }
+}

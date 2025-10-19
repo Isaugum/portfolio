@@ -1,0 +1,12 @@
+---
+import './Projects.scss';
+import { getPageData } from '../../../database/request';
+import TabGroup from '@components/molecules/TabGroup/TabGroup';
+
+const { data } = await getPageData('projects');
+---
+
+<section id='projects' class="container--main grid-main">
+    <h2 class="introduction__title text--h2">PROJECTS</h2>
+    <TabGroup client:load />
+</section>

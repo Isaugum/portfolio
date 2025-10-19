@@ -1,0 +1,29 @@
+@use '@layout/breakpoints' as br;
+
+.tab-group {
+
+    @include br.max-width(md) {
+        padding: 1rem 2rem;
+    }
+
+    @include br.min-width(lg) {
+        padding: 1rem 4rem;
+    }
+
+    &__btn {
+        padding: 0.5rem 2rem;
+
+        color: var(--color-accent);
+        border: 1px solid var(--color-accent);
+    }
+
+    &__body {
+        padding: 1rem;
+        border: 1px solid var(--color-accent);
+    }
+
+    &__content {
+        padding: 1rem;
+        border: 1px dashed var(--color-accent);
+    }
+}

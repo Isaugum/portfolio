@@ -1,0 +1,15 @@
+---
+import { getPageData } from '../../../database/request';
+import './Skills.scss';
+import IconDisplayGird from "@components/molecules/IconDisplayGrid/IconDisplayGird.astro";
+
+const { data } = await getPageData('skills');
+---
+
+<section id="skills" class="container--main grid-main">
+    <h2 class="skills__title text--h2">TECHNOLOGY AND SKILLS</h2>
+    <p class="skills__text">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+    </p>
+    <IconDisplayGird />
+</section>

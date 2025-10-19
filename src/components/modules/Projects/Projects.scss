@@ -1,11 +1,11 @@
 @use '@layout/breakpoints' as br;
 
-#about {
+#projects {
     text-shadow: none;
 
-    padding-top: 4rem;
-
     @include br.min-width(md) {
+        padding: 4rem;
+        
         scroll-margin-top: 3rem;
     }
 }
