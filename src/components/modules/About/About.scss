@@ -1,5 +1,11 @@
+@use '@layout/breakpoints' as br;
+
 #about {
     text-shadow: none;
 
     padding: 4rem 0;
+
+    @include br.min-width(md) {
+        scroll-margin-top: 4rem;
+    }
 }

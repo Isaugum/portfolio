@@ -1,18 +1,18 @@
 @use '@layout/breakpoints' as br;
 
 .contact-content {
+    width: 100%;
+
     display: grid;
     grid-template-columns: auto;
+
+    place-items: center;
 
     margin: 6rem 0;
     padding: 2rem 1rem;
 
     box-shadow: 0 -1rem 3rem -1rem var(--color-accent-darker);
     box-shadow: 0 0 3rem 0 var(--color-accent-darker);
-
-    @include br.min-width(md) {
-        grid-template-columns: repeat(3, 1fr);
-    }
 
     &__title {
         width: 100%;
@@ -22,6 +22,10 @@
     }
 
     &__container {
+        min-width: 300px;
+        width: 100%;
+        max-width: 500px;
+
         display: grid;
         grid-template-columns: repeat(3, auto);
         place-items: center;
@@ -30,7 +34,9 @@
         margin: 1rem 0;
         padding-top: 2rem;
 
-        border-top: 1px solid var(--color-accent);
+        @include br.max-width(md) {
+            border-top: 1px solid var(--color-accent);
+        }
     }
 
     &__icon {

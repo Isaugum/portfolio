@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     
     overflow-y: auto;
+    overflow-x: hidden;
 
     color: var(--color-text-main);
     background-color: var(--color-background);

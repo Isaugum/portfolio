@@ -2,13 +2,14 @@
 import './About.scss';
 import IconDisplayGird from '@components/molecules/IconDisplayGrid/IconDisplayGird.astro';
 import ContactDisplay from '@components/molecules/ContactsDisplay/ContactDisplay.astro';
-import InfoDisplay from '@components/molecules/InfoDisplay/InfoDisplay.astro';
 import IntroductionDisplay from '@components/molecules/IntroductionDisplay/IntroductionDisplay.astro';
+import { getPageData } from '../../../database/request';
+
+const { data } = await getPageData('about');
 ---
 
 <section id='about' class="container--main grid-main">
-    <IntroductionDisplay />
-    <InfoDisplay />
+    <IntroductionDisplay title={data?.title ?? "ABOUT"} text={data?.text ?? ''} />
     <ContactDisplay />
     <IconDisplayGird />
 </section>

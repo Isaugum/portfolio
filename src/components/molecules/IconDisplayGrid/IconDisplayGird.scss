@@ -4,13 +4,21 @@
     display: grid;
     grid-template-columns: auto;
 
-    @include br.min-width(md) {
-        grid-template-columns: repeat(3, 1fr);
+    @include br.min-width(lg) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto 1fr;
     }
 
     &__section-title {
         width: 100%;
-        text-align: center; 
+        text-align: center;
+
+        margin-bottom: 1rem;
+
+        @include br.min-width(lg) {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
     }
 
     &__title {
@@ -31,6 +39,10 @@
         padding-top: 2rem;
 
         border-top: 1px solid var(--color-accent);
+
+        @include br.min-width(lg) {
+            grid-row-start: 2;
+        }
     }
 
     &__icon {
