@@ -32,18 +32,20 @@ import { NAV_ELEMENTS } from './header.content';
     }
   </nav>
 
-  <!-- Theme toggle -->
-  <button class='header__theme-toggle' aria-label='Toggle theme'>
-    <svg class='header__theme-icon' viewBox='0 0 24 24' aria-hidden='true'>
-      <path
-        fill='currentColor'
-        d='M12 3a1 1 0 0 1 0 2 7 7 0 1 0 7 7 1 1 0 1 1 2 0 9 9 0 1 1-9-9Z'
-      ></path>
-    </svg>
-  </button>
-  <button class='header__lang-toggle' aria-label='Toggle language' data-lang>
-    EN
-  </button>
+  <div class='header__toggles'>
+    <!-- Theme toggle -->
+    <button class='header__theme-toggle' aria-label='Toggle theme'>
+      <svg class='header__theme-icon' viewBox='0 0 24 24' aria-hidden='true'>
+        <path
+          fill='currentColor'
+          d='M12 3a1 1 0 0 1 0 2 7 7 0 1 0 7 7 1 1 0 1 1 2 0 9 9 0 1 1-9-9Z'
+        ></path>
+      </svg>
+    </button>
+    <button class='header__lang-toggle' aria-label='Toggle language' data-lang>
+      EN
+    </button>
+  </div>
 </header>
 
 <script>

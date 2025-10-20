@@ -31,58 +31,6 @@
   }
 }
 
-// Floating decoration mixin
-@mixin floating-decoration(
-  $content: '</>',
-  $top: 10%,
-  $right: 5%,
-  $animation: floatCode
-) {
-  &::after {
-    content: $content;
-    position: absolute;
-    top: $top;
-    right: $right;
-    font-size: 2rem;
-    color: var(--color-accent);
-    opacity: 0.05;
-    font-family: 'Courier New', monospace;
-    animation: $animation 15s ease-in-out infinite;
-    pointer-events: none;
-    z-index: -1;
-  }
-}
-
-// Section title with animated underline
-@mixin section-title($margin-bottom: 3rem) {
-  position: relative;
-  margin-bottom: $margin-bottom;
-  text-align: center;
-  width: 100%;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: var(--color-accent);
-    border-radius: 1px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-}
-
-// Standard section container
-@mixin section-container($padding-top: 4rem, $padding-bottom: 4rem) {
-  text-shadow: none;
-  position: relative;
-  overflow: hidden;
-  padding-top: $padding-top;
-  padding-bottom: $padding-bottom;
-}
-
 // Responsive padding mixin
 @mixin responsive-padding($mobile: 2rem, $tablet: 4rem, $desktop: 5rem) {
   padding: $mobile;

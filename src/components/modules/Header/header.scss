@@ -93,6 +93,10 @@
     }
   }
 
+  &__toggles {
+    display: flex;
+  }
+
   // Theme toggle
   &__theme-toggle {
     background: var(--color-accent-10);

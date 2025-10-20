@@ -4,11 +4,11 @@
   @include br.min-width(lg) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: 4rem;
   }
 
   &__text {
     padding: 1rem 2rem;
+    margin-bottom: 2rem;
     text-align: center;
     line-height: 1.6;
     color: var(--color-text-secondary);

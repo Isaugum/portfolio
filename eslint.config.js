@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import prettierConfig from 'eslint-config-prettier';
+import astro from 'eslint-plugin-astro';
 import prettier from 'eslint-plugin-prettier';
 
 export default [
@@ -72,14 +73,8 @@ export default [
       },
     },
   },
+  ...astro.configs['flat/recommended'],
   {
-    ignores: [
-      'node_modules/',
-      'dist/',
-      '.astro/',
-      'public/',
-      'pnpm-lock.yaml',
-      '**/*.astro',
-    ],
+    ignores: ['node_modules/', 'dist/', '.astro/', 'public/', 'pnpm-lock.yaml'],
   },
 ];

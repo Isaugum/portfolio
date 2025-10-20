@@ -1,9 +1,8 @@
 ---
 import Section from '@components/atoms/Section/Section.astro';
 import TabGroup from '@components/molecules/TabGroup/TabGroup';
-import { getData, getPageData } from '@database/request';
+import { getData } from '@database/request';
 
-const { data } = await getPageData('projects');
 const { data: projectsData } = await getData('projects', 'portfolio');
 
 // Sample projects data if database is empty

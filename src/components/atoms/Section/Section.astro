@@ -13,20 +13,11 @@ const {
   title,
   subtitle,
   class: className = '',
-  decoration = 'code',
-  stagger = false,
+  // decoration = 'code',
+  // stagger = false,
 } = Astro.props;
 
-const sectionClasses = [
-  'section--main',
-  decoration !== 'none'
-    ? `section--with-${decoration === 'code' ? 'decoration' : 'tech-decoration'}`
-    : '',
-  stagger ? 'section--staggered' : '',
-  className,
-]
-  .filter(Boolean)
-  .join(' ');
+const sectionClasses = ['section--main', className].filter(Boolean).join(' ');
 ---
 
 <section id={id} class={sectionClasses}>

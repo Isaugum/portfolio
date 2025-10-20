@@ -1,10 +1,9 @@
 ---
 import Section from '@components/atoms/Section/Section.astro';
-import IconDisplayGird from '@components/molecules/IconDisplayGrid/IconDisplayGird.astro';
 import SkillsTabGroup from '@components/molecules/SkillsTabGroup/SkillsTabGroup.tsx';
-import { getPageData } from '@database/request';
+// import { getPageData } from '@database/request';
 
-const { data } = await getPageData('skills');
+// const { data } = await getPageData('skills');
 
 // Skills data with proficiency levels and categories
 const skillsData = {
@@ -70,9 +69,4 @@ const skillsData = {
   stagger
 >
   <SkillsTabGroup client:load skills={skillsData} />
-
-  <!-- Keep the original icon grid as a visual complement -->
-  <div class='skills__visual'>
-    <IconDisplayGird />
-  </div>
 </Section>

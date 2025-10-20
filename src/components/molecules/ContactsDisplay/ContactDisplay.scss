@@ -2,8 +2,11 @@
 
 .contact-content {
   width: 100%;
-  margin: 6rem 0;
+
   padding: 2rem 1rem;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+
   box-shadow: 0 -1rem 3rem -1rem var(--color-accent-darker);
   box-shadow: 0 0 3rem 0 var(--color-accent-darker);
 
@@ -31,23 +34,6 @@
     margin-right: auto;
   }
 
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    @include br.max-width(lg) {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
-
-  &__form-section {
-    // Form styles are in ContactForm.scss
-  }
-
   &__social-section {
     display: flex;
     flex-direction: column;
@@ -65,15 +51,12 @@
 
   &__container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     gap: 1.5rem;
     width: 100%;
-    max-width: 300px;
 
     @include br.max-width(md) {
-      flex-direction: row;
-      justify-content: center;
-      max-width: none;
+      flex-direction: column;
     }
   }
 

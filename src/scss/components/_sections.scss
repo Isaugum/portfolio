@@ -9,35 +9,18 @@
     text-shadow: none;
     position: relative;
     overflow: hidden;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
 
-    @include br.min-width(md) {
-      scroll-margin-top: 8vh;
-    }
-  }
-
-  // Section with floating decoration
-  &--with-decoration {
-    @include floating-decoration();
-  }
-
-  // Section with tech decoration
-  &--with-tech-decoration {
-    @include floating-decoration('{ }', 15%, 8%, floatTech);
+    scroll-margin-top: 8vh;
   }
 
   // Section title
   &__title {
-    @include section-title();
+    width: 100%;
 
-    @include br.min-width(md) {
-      margin-bottom: 4rem;
-    }
+    padding-top: 5rem;
+    padding-bottom: 2rem;
 
-    @include br.min-width(lg) {
-      margin-bottom: 5rem;
-    }
+    text-align: center;
   }
 
   // Section subtitle/description
@@ -56,7 +39,13 @@
 
   // Section content wrapper
   &__content {
-    @include responsive-padding();
+    @include br.min-width(md) {
+      padding: 2rem 4rem;
+    }
+
+    @include br.min-width(lg) {
+      padding: 2rem 6rem;
+    }
   }
 
   // Section with grid layout
