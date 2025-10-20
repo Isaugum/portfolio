@@ -56,7 +56,7 @@ export default [
       'prefer-const': 'error',
       'no-var': 'error',
       'no-console': 'warn',
-      'no-undef': 'off', // TypeScript handles this
+      'no-undef': 'off',
     },
   },
   {
@@ -79,7 +79,7 @@ export default [
       '.astro/',
       'public/',
       'pnpm-lock.yaml',
-      '**/*.astro', // Skip Astro files for now
+      '**/*.astro',
     ],
   },
 ];
