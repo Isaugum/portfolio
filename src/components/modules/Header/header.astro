@@ -5,9 +5,21 @@ import { NAV_ELEMENTS } from './header.content';
 ---
 
 <header class="header hidden">
-    <!-- <div class="header__logo">
-        <img src="logo.svg" />
-    </div> -->
+    <!-- Progress indicator -->
+    <div class="header__progress">
+        <div class="header__progress-bar"></div>
+    </div>
+    
+    <!-- Mobile menu toggle -->
+    <button class="header__mobile-toggle" aria-label="Toggle navigation menu">
+        <span class="header__hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </button>
+    
+    <!-- Navigation -->
     <nav class="nav">
         {
             NAV_ELEMENTS.map((elem: { text: string, href: string }) => {
@@ -15,6 +27,11 @@ import { NAV_ELEMENTS } from './header.content';
             })
         }
     </nav>
+    
+    <!-- Theme toggle -->
+    <button class="header__theme-toggle" aria-label="Toggle theme">
+        <span class="header__theme-icon">🌙</span>
+    </button>
 </header>
 
 <script>
