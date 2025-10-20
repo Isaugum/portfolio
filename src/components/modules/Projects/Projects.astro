@@ -1,12 +1,81 @@
 ---
 import './Projects.scss';
-import { getPageData } from '../../../database/request';
+import { getPageData, getData } from '../../../database/request';
 import TabGroup from '@components/molecules/TabGroup/TabGroup';
 
 const { data } = await getPageData('projects');
+const { data: projectsData } = await getData('projects', 'portfolio');
+
+// Sample projects data if database is empty
+const sampleProjects = [
+  {
+    id: 1,
+    title: "E-Commerce Platform",
+    description: "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, inventory management, and admin dashboard.",
+    technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "Tailwind CSS"],
+    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop",
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
+    featured: true,
+    category: "Web Development"
+  },
+  {
+    id: 2,
+    title: "Task Management App",
+    description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+    technologies: ["Vue.js", "Socket.io", "MongoDB", "Express"],
+    imageUrl: "#",
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
+    category: "Web Development"
+  },
+  {
+    id: 3,
+    title: "Mobile Weather App",
+    description: "A cross-platform mobile weather application with location-based forecasts, weather alerts, and beautiful animations.",
+    technologies: ["React Native", "Expo", "OpenWeather API"],
+    imageUrl: "#",
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
+    category: "Mobile Development"
+  },
+  {
+    id: 4,
+    title: "Data Visualization Dashboard",
+    description: "An interactive dashboard for visualizing complex datasets with real-time updates and customizable charts.",
+    technologies: ["D3.js", "Python", "Flask", "SQLite"],
+    imageUrl: "#",
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
+    category: "Data Science"
+  },
+  {
+    id: 5,
+    title: "AI Chatbot Assistant",
+    description: "An intelligent chatbot powered by machine learning that provides customer support and answers frequently asked questions.",
+    technologies: ["Python", "TensorFlow", "FastAPI", "Redis"],
+    imageUrl: "#",
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
+    featured: true,
+    category: "AI/ML"
+  },
+  {
+    id: 6,
+    title: "Blockchain Voting System",
+    description: "A secure and transparent voting system built on blockchain technology ensuring immutability and verifiability.",
+    technologies: ["Solidity", "Web3.js", "React", "Ethereum"],
+    imageUrl: "#",
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
+    category: "Blockchain"
+  }
+];
+
+const projects = projectsData && projectsData.length > 0 ? projectsData : sampleProjects;
 ---
 
 <section id='projects' class="container--main grid-main">
     <h2 class="introduction__title text--h2">PROJECTS</h2>
-    <TabGroup client:load />
+    <TabGroup client:load projects={projects} />
 </section>

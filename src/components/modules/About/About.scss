@@ -6,6 +6,6 @@
     padding-top: 4rem;
 
     @include br.min-width(md) {
-        scroll-margin-top: 3rem;
+        scroll-margin-top: 8vh;
     }
 }
