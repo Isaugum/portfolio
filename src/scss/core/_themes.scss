@@ -17,6 +17,7 @@
           #{color.red($value)}, #{color.green($value)}, #{color.blue($value)};
       }
     }
+    --background-image: url('/#{$theme-name}-bg.webp');
     --font-heading: 'VT323', monospace;
     --font-body: 'IBM Plex Mono', monospace;
   }
