@@ -26,6 +26,8 @@ export const initHeader = () => {
   let isMenuOpen = false;
   let currentTheme = 'dark';
   let currentLang = getLanguage();
+  let programmaticScroll = false;
+  let scrollEndTimer: number | undefined;
 
   // Mobile menu toggle
   if (mobileToggle) {
@@ -88,6 +90,7 @@ export const initHeader = () => {
 
   // Active section highlighting
   const updateActiveSection = () => {
+    if (programmaticScroll) return;
     const sections = document.querySelectorAll('section[id]');
     const scrollPos = window.scrollY + 100;
 
@@ -130,6 +133,7 @@ export const initHeader = () => {
       if (href?.startsWith('#')) {
         e.preventDefault();
         // Immediately update active state on click
+        programmaticScroll = true;
         navLinks.forEach(l => l.classList.remove('nav__link--active'));
         link.classList.add('nav__link--active');
         const targetSection = document.querySelector(href);
@@ -143,6 +147,13 @@ export const initHeader = () => {
             top: targetPosition,
             behavior: 'smooth',
           });
+
+          // Debounce scroll end to re-enable scroll-based updates
+          if (scrollEndTimer) window.clearTimeout(scrollEndTimer);
+          scrollEndTimer = window.setTimeout(() => {
+            programmaticScroll = false;
+            updateActiveSection();
+          }, 250);
 
           // Close mobile menu if open
           if (isMenuOpen) {
@@ -163,7 +174,15 @@ export const initHeader = () => {
   // Event listeners
   window.addEventListener('scroll', () => {
     updateProgress();
-    updateActiveSection();
+    if (programmaticScroll) {
+      if (scrollEndTimer) window.clearTimeout(scrollEndTimer);
+      scrollEndTimer = window.setTimeout(() => {
+        programmaticScroll = false;
+        updateActiveSection();
+      }, 200);
+    } else {
+      updateActiveSection();
+    }
     updateHeaderScroll();
   });
 
