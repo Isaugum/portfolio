@@ -286,16 +286,17 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('/bg-test.png');
+    // background-image: url('/bg-test.png');
+    background-image: url('/test2.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -2;
 
     /* Dark overlay */
-    background-color: rgba(0, 0, 0, 0.5); // darkens image
-    background-blend-mode: multiply; // blends color with image
-    opacity: 0.8; // adjust for strength
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+    opacity: 0.8;
   }
 
   &__canvas,
