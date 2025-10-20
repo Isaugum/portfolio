@@ -1,5 +1,5 @@
-import './AnimatedBackground.scss'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
+import './AnimatedBackground.scss';
 
 interface Particle {
   x: number;
@@ -36,7 +36,7 @@ export default () => {
     const createParticles = () => {
       particlesRef.current = [];
       const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
-      
+
       for (let i = 0; i < particleCount; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
@@ -45,7 +45,7 @@ export default () => {
           vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 2 + 1,
           opacity: Math.random() * 0.5 + 0.1,
-          color: Math.random() > 0.7 ? '#00ffaa' : '#ffffff'
+          color: Math.random() > 0.7 ? '#00ffaa' : '#ffffff',
         });
       }
     };
@@ -70,7 +70,11 @@ export default () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color + Math.floor(particle.opacity * 255).toString(16).padStart(2, '0');
+        ctx.fillStyle =
+          particle.color +
+          Math.floor(particle.opacity * 255)
+            .toString(16)
+            .padStart(2, '0');
         ctx.fill();
 
         // Draw connections
@@ -83,7 +87,11 @@ export default () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = '#00ffaa' + Math.floor((1 - distance / 100) * 50).toString(16).padStart(2, '0');
+            ctx.strokeStyle =
+              '#00ffaa' +
+              Math.floor((1 - distance / 100) * 50)
+                .toString(16)
+                .padStart(2, '0');
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -104,34 +112,34 @@ export default () => {
   }, []);
 
   return (
-    <div className="animated-background">
+    <div className='animated-background'>
       {/* Canvas for particles */}
       <canvas
         ref={canvasRef}
-        className="animated-background__canvas"
+        className='animated-background__canvas'
         style={{ position: 'fixed', top: 0, left: 0, zIndex: -1 }}
       />
-      
+
       {/* Geometric shapes */}
-      <div className="animated-background__shapes">
-        <div className="animated-background__shape animated-background__shape--circle"></div>
-        <div className="animated-background__shape animated-background__shape--hexagon"></div>
-        <div className="animated-background__shape animated-background__shape--triangle"></div>
-        <div className="animated-background__shape animated-background__shape--square"></div>
-        <div className="animated-background__shape animated-background__shape--circle animated-background__shape--large"></div>
-        <div className="animated-background__shape animated-background__shape--hexagon animated-background__shape--small"></div>
+      <div className='animated-background__shapes'>
+        <div className='animated-background__shape animated-background__shape--circle'></div>
+        <div className='animated-background__shape animated-background__shape--hexagon'></div>
+        <div className='animated-background__shape animated-background__shape--triangle'></div>
+        <div className='animated-background__shape animated-background__shape--square'></div>
+        <div className='animated-background__shape animated-background__shape--circle animated-background__shape--large'></div>
+        <div className='animated-background__shape animated-background__shape--hexagon animated-background__shape--small'></div>
       </div>
 
       {/* Gradient overlays */}
-      <div className="animated-background__gradients">
-        <div className="animated-background__gradient animated-background__gradient--radial-1"></div>
-        <div className="animated-background__gradient animated-background__gradient--radial-2"></div>
-        <div className="animated-background__gradient animated-background__gradient--linear-1"></div>
-        <div className="animated-background__gradient animated-background__gradient--linear-2"></div>
+      <div className='animated-background__gradients'>
+        <div className='animated-background__gradient animated-background__gradient--radial-1'></div>
+        <div className='animated-background__gradient animated-background__gradient--radial-2'></div>
+        <div className='animated-background__gradient animated-background__gradient--linear-1'></div>
+        <div className='animated-background__gradient animated-background__gradient--linear-2'></div>
       </div>
 
       {/* Noise texture overlay */}
-      <div className="animated-background__noise"></div>
+      <div className='animated-background__noise'></div>
     </div>
   );
 };

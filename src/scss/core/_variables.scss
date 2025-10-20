@@ -1,9 +1,8 @@
 $base-bg: #0b0b0b;
 $base-text: #e6e6e6;
 $base-accent: #00ffaa;
-$red-accent: #FF0000;
-$pink-accent: #F527D3;
-
+$red-accent: #ff0000;
+$pink-accent: #f527d3;
 
 $colors: (
   light: (
@@ -15,18 +14,18 @@ $colors: (
     background: $base-bg,
     text-main: $base-text,
     accent: $base-accent,
-    accent-darker: darken($base-accent, 40%)
+    accent-darker: darken($base-accent, 40%),
   ),
   dark-red: (
     background: $base-bg,
     text-main: $base-text,
     accent: $red-accent,
-    accent-darker: darken($red-accent, 40%)
+    accent-darker: darken($red-accent, 40%),
   ),
   dark-pink: (
     background: $base-bg,
     text-main: $base-text,
     accent: $pink-accent,
-    accent-darker: darken($pink-accent, 40%)
+    accent-darker: darken($pink-accent, 40%),
   ),
 );

@@ -151,7 +151,12 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
       transition: left 0.5s ease;
     }
 
@@ -175,11 +180,11 @@
 
   @include br.max-width(md) {
     padding: 1.5rem;
-    
+
     &__form {
       gap: 1.25rem;
     }
-    
+
     &__submit {
       padding: 0.875rem 1.5rem;
       font-size: 0.95rem;
@@ -188,6 +193,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

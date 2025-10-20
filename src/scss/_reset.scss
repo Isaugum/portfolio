@@ -12,7 +12,8 @@ html {
 }
 
 /* Remove default list styles */
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -23,13 +24,18 @@ a {
 }
 
 /* Reset images and media */
-img, video, picture {
+img,
+video,
+picture {
   max-width: 100%;
   display: block;
 }
 
 /* Remove form element inconsistencies */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
   border: none;
   outline: none;
@@ -42,7 +48,12 @@ body {
 }
 
 /* Reset headings if needed */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: normal;
 }
 

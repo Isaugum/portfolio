@@ -17,8 +17,10 @@
     border-left: 0.35em solid currentColor;
     opacity: 0;
     transform: translateX(-0.25em);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+
     filter: drop-shadow(0 0 3px var(--color-accent));
   }
 

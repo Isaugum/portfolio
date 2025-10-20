@@ -44,7 +44,7 @@
       background: rgba(0, 255, 170, 0.05);
     }
 
-    &[aria-selected="true"] {
+    &[aria-selected='true'] {
       color: var(--color-background);
       background: var(--color-accent);
       border-color: var(--color-accent);
@@ -103,7 +103,7 @@
     transform: translateY(-4px);
     box-shadow: 0 8px 32px rgba(0, 255, 170, 0.15);
     border-color: var(--color-accent);
-    
+
     .project-card__overlay {
       opacity: 1;
     }
@@ -112,7 +112,7 @@
   &--featured {
     border-color: var(--color-accent);
     box-shadow: 0 4px 16px rgba(0, 255, 170, 0.1);
-    
+
     &::before {
       content: 'Featured';
       position: absolute;
@@ -132,14 +132,14 @@
     position: relative;
     height: 200px;
     overflow: hidden;
-    
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
-    
+
     &:hover img {
       transform: scale(1.05);
     }
@@ -240,20 +240,20 @@
     &__image {
       height: 150px;
     }
-    
+
     &__content {
       padding: 1rem;
     }
-    
+
     &__title {
       font-size: 1.1rem;
     }
-    
+
     &__links {
       flex-direction: column;
       gap: 0.75rem;
     }
-    
+
     &__link {
       padding: 0.5rem 1rem;
       font-size: 0.85rem;

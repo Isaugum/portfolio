@@ -1,17 +1,20 @@
 ---
-import { getData } from "../../../database/request";
+import { getData } from '../../../database/request';
 
 const { data } = await getData('info', 'bio');
 ---
 
-<div class="card card--background container__dictionary">
-    {
-        data?.map((item) => {
-            return (
-                <div class="container__dictionary__item">
-                    <span class="container__dictionary__key">{item.key}</span><span class="container__dictionary__value">{item.value}</span>    
-                </div>
-            )
-        })
-    }
-</div>  
+<div class='card card--background container__dictionary'>
+  {
+    data?.map(item => {
+      return (
+        <div class='container__dictionary__item'>
+          <>
+            <span class='container__dictionary__key'>{item.key}</span>
+            <span class='container__dictionary__value'>{item.value}</span>
+          </>
+        </div>
+      );
+    })
+  }
+</div>

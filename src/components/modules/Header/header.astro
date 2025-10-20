@@ -1,43 +1,47 @@
 ---
 import Anchor from '@components/atoms/Anchor/Anchor.astro';
 import './header.scss';
-import { NAV_ELEMENTS } from './header.content'; 
+import { NAV_ELEMENTS } from './header.content';
 ---
 
-<header class="header hidden">
-    <!-- Progress indicator -->
-    <div class="header__progress">
-        <div class="header__progress-bar"></div>
-    </div>
-    
-    <!-- Mobile menu toggle -->
-    <button class="header__mobile-toggle" aria-label="Toggle navigation menu">
-        <span class="header__hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
-    </button>
-    
-    <!-- Navigation -->
-    <nav class="nav">
-        {
-            NAV_ELEMENTS.map((elem: { text: string, href: string }) => {
-                return <Anchor className="nav__link text--h3" href={elem.href}>{elem.text}</Anchor>
-            })
-        }
-    </nav>
-    
-    <!-- Theme toggle -->
-    <button class="header__theme-toggle" aria-label="Toggle theme">
-        <span class="header__theme-icon">🌙</span>
-    </button>
+<header class='header hidden'>
+  <!-- Progress indicator -->
+  <div class='header__progress'>
+    <div class='header__progress-bar'></div>
+  </div>
+
+  <!-- Mobile menu toggle -->
+  <button class='header__mobile-toggle' aria-label='Toggle navigation menu'>
+    <span class='header__hamburger'>
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+
+  <!-- Navigation -->
+  <nav class='nav'>
+    {
+      NAV_ELEMENTS.map((elem: { text: string; href: string }) => {
+        return (
+          <Anchor className='nav__link text--h3' href={elem.href}>
+            {elem.text}
+          </Anchor>
+        );
+      })
+    }
+  </nav>
+
+  <!-- Theme toggle -->
+  <button class='header__theme-toggle' aria-label='Toggle theme'>
+    <span class='header__theme-icon'>🌙</span>
+  </button>
 </header>
 
 <script>
-    import { initHeader } from './header.ts';
+  import { initHeader } from './header.ts';
 
-    window.addEventListener('DOMContentLoaded', () => {
-        initHeader();
-    });
+  window.addEventListener('DOMContentLoaded', () => {
+    initHeader();
+  });
 </script>

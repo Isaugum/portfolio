@@ -1,47 +1,57 @@
 ---
+import NextjsIcon from '@public/icons/contact/email.svg';
+import ReactIcon from '@public/icons/contact/github.svg';
+import ReactQueryIcon from '@public/icons/contact/linkedin.svg';
 import './ContactDisplay.scss';
-import ReactIcon from '../../../../public/icons/contact/github.svg';
-import ReactQueryIcon from '../../../../public/icons/contact/linkedin.svg';
-import NextjsIcon from '../../../../public/icons/contact/email.svg';
 import ContactForm from './ContactForm.tsx';
 ---
 
-<div class="contact-content">
-    <h3 class="contact-content__title">Get In Touch</h3>
-    <p class="contact-content__subtitle">
-        Have a project in mind or want to collaborate? I'd love to hear from you!
-    </p>
-    
-    <div class="contact-content__grid">
-        <!-- Contact Form -->
-        <div class="contact-content__form-section">
-            <ContactForm client:load />
-        </div>
-        
-        <!-- Social Links -->
-        <div class="contact-content__social-section">
-            <h4 class="contact-content__social-title">Connect with me</h4>
-            <div class="contact-content__container">
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="contact-content__link">
-                    <ReactIcon class="contact-content__icon" />
-                    <span>GitHub</span>
-                </a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="contact-content__link">
-                    <ReactQueryIcon class="contact-content__icon" />
-                    <span>LinkedIn</span>
-                </a>
-                <a href="mailto:your.email@example.com" class="contact-content__link">
-                    <NextjsIcon class="contact-content__icon" />
-                    <span>Email</span>
-                </a>
-            </div>
-            
-            <!-- Resume Download -->
-            <div class="contact-content__resume">
-                <a href="/resume.pdf" download class="contact-content__resume-btn">
-                    📄 Download Resume
-                </a>
-            </div>
-        </div>
+<div class='contact-content'>
+  <h3 class='contact-content__title'>Get In Touch</h3>
+  <p class='contact-content__subtitle'>
+    Have a project in mind or want to collaborate? I'd love to hear from you!
+  </p>
+
+  <div class='contact-content__grid'>
+    <!-- Contact Form -->
+    <div class='contact-content__form-section'>
+      <ContactForm client:load />
     </div>
+
+    <!-- Social Links -->
+    <div class='contact-content__social-section'>
+      <h4 class='contact-content__social-title'>Connect with me</h4>
+      <div class='contact-content__container'>
+        <a
+          href='https://github.com/yourusername'
+          target='_blank'
+          rel='noopener noreferrer'
+          class='contact-content__link'
+        >
+          <ReactIcon class='contact-content__icon' />
+          <span>GitHub</span>
+        </a>
+        <a
+          href='https://linkedin.com/in/yourusername'
+          target='_blank'
+          rel='noopener noreferrer'
+          class='contact-content__link'
+        >
+          <ReactQueryIcon class='contact-content__icon' />
+          <span>LinkedIn</span>
+        </a>
+        <a href='mailto:your.email@example.com' class='contact-content__link'>
+          <NextjsIcon class='contact-content__icon' />
+          <span>Email</span>
+        </a>
+      </div>
+
+      <!-- Resume Download -->
+      <div class='contact-content__resume'>
+        <a href='/resume.pdf' download class='contact-content__resume-btn'>
+          📄 Download Resume
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

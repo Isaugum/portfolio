@@ -1,119 +1,130 @@
 ---
-import './About.scss';
+import AboutTabGroup from '@components/molecules/AboutTabGroup/AboutTabGroup.tsx';
 import ContactDisplay from '@components/molecules/ContactsDisplay/ContactDisplay.astro';
 import IntroductionDisplay from '@components/molecules/IntroductionDisplay/IntroductionDisplay.astro';
-import AboutTabGroup from '@components/molecules/AboutTabGroup/AboutTabGroup.tsx';
-import { getPageData } from '../../../database/request';
+import { getPageData } from '@database/request';
+import './About.scss';
 
 const { data } = await getPageData('about');
 
 // Personal stats and timeline data
 const personalStats = {
-  codingYears: "4+",
+  codingYears: '4+',
   projectsCompleted: 25,
   languagesLearned: 12,
   certifications: 3,
   githubCommits: 1500,
-  linesOfCode: "50K+"
+  linesOfCode: '50K+',
 };
 
 const timelineData = [
   {
-    year: "2020",
-    title: "Started Coding Journey",
-    description: "Began learning web development with HTML, CSS, and JavaScript",
-    icon: "🚀",
-    type: "milestone"
+    year: '2020',
+    title: 'Started Coding Journey',
+    description:
+      'Began learning web development with HTML, CSS, and JavaScript',
+    icon: '🚀',
+    type: 'milestone',
   },
   {
-    year: "2021",
-    title: "First React Project",
-    description: "Built my first React application and fell in love with component-based architecture",
-    icon: "⚛️",
-    type: "project"
+    year: '2021',
+    title: 'First React Project',
+    description:
+      'Built my first React application and fell in love with component-based architecture',
+    icon: '⚛️',
+    type: 'project',
   },
   {
-    year: "2022",
-    title: "Full-Stack Development",
-    description: "Expanded into backend development with Node.js and Laravel",
-    icon: "🔧",
-    type: "skill"
+    year: '2022',
+    title: 'Full-Stack Development',
+    description: 'Expanded into backend development with Node.js and Laravel',
+    icon: '🔧',
+    type: 'skill',
   },
   {
-    year: "2023",
-    title: "TypeScript Mastery",
-    description: "Adopted TypeScript for better code quality and developer experience",
-    icon: "📘",
-    type: "skill"
+    year: '2023',
+    title: 'TypeScript Mastery',
+    description:
+      'Adopted TypeScript for better code quality and developer experience',
+    icon: '📘',
+    type: 'skill',
   },
   {
-    year: "2024",
-    title: "Modern Stack Focus",
-    description: "Specialized in Next.js, React Query, and modern development practices",
-    icon: "✨",
-    type: "current"
-  }
+    year: '2024',
+    title: 'Modern Stack Focus',
+    description:
+      'Specialized in Next.js, React Query, and modern development practices',
+    icon: '✨',
+    type: 'current',
+  },
 ];
 
 const achievements = [
   {
-    title: "AWS Certified",
-    description: "Cloud Practitioner",
-    icon: "☁️",
-    year: "2023"
+    title: 'AWS Certified',
+    description: 'Cloud Practitioner',
+    icon: '☁️',
+    year: '2023',
   },
   {
-    title: "React Expert",
-    description: "Advanced React Patterns",
-    icon: "⚛️",
-    year: "2022"
+    title: 'React Expert',
+    description: 'Advanced React Patterns',
+    icon: '⚛️',
+    year: '2022',
   },
   {
-    title: "Open Source",
-    description: "Contributor to 5+ projects",
-    icon: "🌐",
-    year: "2023"
-  }
+    title: 'Open Source',
+    description: 'Contributor to 5+ projects',
+    icon: '🌐',
+    year: '2023',
+  },
 ];
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Product Manager",
-    company: "TechCorp",
-    content: "Working with Domen was an absolute pleasure. His attention to detail and ability to translate complex requirements into elegant solutions is remarkable. The project was delivered on time and exceeded our expectations.",
+    name: 'Sarah Johnson',
+    role: 'Product Manager',
+    company: 'TechCorp',
+    content:
+      'Working with Domen was an absolute pleasure. His attention to detail and ability to translate complex requirements into elegant solutions is remarkable. The project was delivered on time and exceeded our expectations.',
     rating: 5,
-    avatar: "👩‍💼"
+    avatar: '👩‍💼',
   },
   {
-    name: "Michael Chen",
-    role: "Senior Developer",
-    company: "StartupXYZ",
-    content: "Domen's expertise in React and TypeScript is outstanding. He not only delivered high-quality code but also mentored our team on best practices. His communication skills and professionalism are top-notch.",
+    name: 'Michael Chen',
+    role: 'Senior Developer',
+    company: 'StartupXYZ',
+    content:
+      "Domen's expertise in React and TypeScript is outstanding. He not only delivered high-quality code but also mentored our team on best practices. His communication skills and professionalism are top-notch.",
     rating: 5,
-    avatar: "👨‍💻"
+    avatar: '👨‍💻',
   },
   {
-    name: "Emily Rodriguez",
-    role: "Design Director",
-    company: "CreativeStudio",
-    content: "Collaborating with Domen was seamless. He understood our design vision perfectly and brought it to life with clean, performant code. His frontend skills are exceptional and he's a great team player.",
+    name: 'Emily Rodriguez',
+    role: 'Design Director',
+    company: 'CreativeStudio',
+    content:
+      "Collaborating with Domen was seamless. He understood our design vision perfectly and brought it to life with clean, performant code. His frontend skills are exceptional and he's a great team player.",
     rating: 5,
-    avatar: "👩‍🎨"
-  }
+    avatar: '👩‍🎨',
+  },
 ];
 ---
 
-<section id='about' class="container--main grid-main">
-    <IntroductionDisplay title={data?.title ?? "ABOUT"} text={data?.text ?? 'Passionate full-stack developer with 4+ years of experience building modern web applications. I love creating user-friendly interfaces and robust backend systems.'} />
-    
-    <AboutTabGroup 
-      client:load 
-      stats={personalStats} 
-      timeline={timelineData} 
-      achievements={achievements}
-      testimonials={testimonials}
-    />
-    
-    <ContactDisplay />
+<section id='about' class='container--main grid-main'>
+  <IntroductionDisplay
+    title={data?.title ?? 'ABOUT'}
+    text={data?.text ??
+      'Passionate full-stack developer with 4+ years of experience building modern web applications. I love creating user-friendly interfaces and robust backend systems.'}
+  />
+
+  <AboutTabGroup
+    client:load
+    stats={personalStats}
+    timeline={timelineData}
+    achievements={achievements}
+    testimonials={testimonials}
+  />
+
+  <ContactDisplay />
 </section>

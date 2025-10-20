@@ -1,51 +1,51 @@
 @use '@layout/breakpoints' as br;
 
 .tech-content {
+  display: grid;
+  grid-template-columns: auto;
+
+  @include br.min-width(lg) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr 1fr;
+
+    padding: 0 4rem;
+  }
+
+  &__title {
+    width: 100%;
+    text-align: center;
+
+    letter-spacing: 0.8rem;
+  }
+
+  &__container {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: repeat(3, auto);
+    place-items: center;
+    gap: 1rem;
+    row-gap: 2rem;
+
+    margin: 1rem 0;
+    padding-top: 2rem;
+
+    border-top: 1px solid var(--color-accent);
 
     @include br.min-width(lg) {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto 1fr 1fr;
-
-        padding: 0 4rem;
+      grid-column-start: 2;
     }
+  }
 
-    &__title {
-        width: 100%;
-        text-align: center;
+  &__icon {
+    height: 3rem;
 
-        letter-spacing: 0.8rem;
+    fill: var(--color-accent);
+    fill-opacity: 0.7;
+    background: transparent;
+
+    transition: ease-in 100ms;
+
+    &:hover {
+      transform: scale(1.1);
     }
-
-    &__container {
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        place-items: center;
-        gap: 1rem;
-        row-gap: 2rem;
-
-        margin: 1rem 0;
-        padding-top: 2rem;
-
-        border-top: 1px solid var(--color-accent);
-
-        @include br.min-width(lg) {
-            grid-column-start: 2;
-        }
-    }
-
-    &__icon {
-        height: 3rem;
-
-        fill: var(--color-accent);
-        fill-opacity: 0.7;
-        background: transparent;
-
-        transition: ease-in 100ms;
-
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
+  }
 }

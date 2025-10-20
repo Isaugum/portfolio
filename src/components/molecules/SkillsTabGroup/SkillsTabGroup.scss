@@ -38,7 +38,7 @@
       transform: translateY(-2px);
     }
 
-    &[data-headlessui-state="selected"] {
+    &[data-headlessui-state='selected'] {
       background: var(--color-accent);
       color: var(--color-background);
       border-color: var(--color-accent);
@@ -155,7 +155,12 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
         animation: shimmer 2s infinite;
       }
     }
@@ -163,7 +168,7 @@
 
   @include br.max-width(md) {
     padding: 1rem;
-    
+
     &__header {
       flex-direction: column;
       gap: 0.75rem;

@@ -1,14 +1,14 @@
 ---
-import InfoDisplay from '../InfoDisplay/InfoDisplay.astro';
+import InfoDisplay from '@components/molecules/InfoDisplay/InfoDisplay.astro';
 import './IntroductionDisplay.scss';
 
 const { title, text } = Astro.props;
 ---
 
-<div class="introduction">
-    <h2 class="introduction__title text--h2">{title}</h2>
-    <p class="introduction__text">
-        {text}
-    </p>
-    <InfoDisplay />
+<div class='introduction'>
+  <h2 class='introduction__title text--h2'>{title}</h2>
+  <p class='introduction__text'>
+    {text}
+  </p>
+  <InfoDisplay />
 </div>

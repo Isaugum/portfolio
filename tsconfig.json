@@ -1,33 +1,30 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "src/**/*"
-  ],
-  "exclude": [
-    "dist"
-  ],
+  "include": [".astro/types.d.ts", "src/**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "types": ["react", "react-dom"],
+    "baseUrl": ".",
     "paths": {
-      "baseUrl": ["."],
-      "@layout/*": [
-        "./src/scss/layout/*"
-      ],
-      "@core/*": [
-        "./src/scss/core/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@style_components/*": [
-        "./src/scss/components/*"
-      ],
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@styles/*": ["./src/scss/*"],
+      "@layout/*": ["./src/scss/layout/*"],
+      "@core/*": ["./src/scss/core/*"],
+      "@style_components/*": ["./src/scss/components/*"],
+      "@data/*": ["./src/data/*"],
+      "@database/*": ["./src/database/*"],
+      "@public/*": ["./public/*"]
     },
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   }
 }

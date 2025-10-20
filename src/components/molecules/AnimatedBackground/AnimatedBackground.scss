@@ -103,22 +103,38 @@
     animation: gradientShift 30s ease-in-out infinite;
 
     &--radial-1 {
-      background: radial-gradient(circle at 20% 80%, var(--color-accent) 0%, transparent 70%);
+      background: radial-gradient(
+        circle at 20% 80%,
+        var(--color-accent) 0%,
+        transparent 70%
+      );
       animation-delay: 0s;
     }
 
     &--radial-2 {
-      background: radial-gradient(circle at 80% 20%, var(--color-accent) 0%, transparent 70%);
+      background: radial-gradient(
+        circle at 80% 20%,
+        var(--color-accent) 0%,
+        transparent 70%
+      );
       animation-delay: -10s;
     }
 
     &--linear-1 {
-      background: linear-gradient(45deg, var(--color-accent) 0%, transparent 50%);
+      background: linear-gradient(
+        45deg,
+        var(--color-accent) 0%,
+        transparent 50%
+      );
       animation-delay: -5s;
     }
 
     &--linear-2 {
-      background: linear-gradient(-45deg, var(--color-accent) 0%, transparent 50%);
+      background: linear-gradient(
+        -45deg,
+        var(--color-accent) 0%,
+        transparent 50%
+      );
       animation-delay: -15s;
     }
   }
@@ -188,7 +204,8 @@
 
 // Animations
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
   25% {
@@ -203,7 +220,8 @@
 }
 
 @keyframes gradientShift {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1) rotate(0deg);
     opacity: 0.03;
   }

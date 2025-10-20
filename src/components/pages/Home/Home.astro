@@ -6,50 +6,53 @@ import { getPageData } from '../../../database/request';
 const { data } = await getPageData('home');
 ---
 
-<section id="home" class="container--main">
-    <div class="hero">
-        <div class="hero__content">
-            <h1 class="hero__title">
-                { data.title }
-            </h1>
-            <h2 class="hero__subtitle text--h3 flicker-animation">
-                { data.subtitle }
-            </h2>
-            <Anchor href="#about" className="hero__cta text--general blink-animation selected">
-                Click anywhere to start
-            </Anchor>
-        </div>
-        <span class="hero__border" />
+<section id='home' class='container--main'>
+  <div class='hero'>
+    <div class='hero__content'>
+      <h1 class='hero__title'>
+        {data.title}
+      </h1>
+      <h2 class='hero__subtitle text--h3 flicker-animation'>
+        {data.subtitle}
+      </h2>
+      <Anchor
+        href='#about'
+        className='hero__cta text--general blink-animation selected'
+      >
+        Click anywhere to start
+      </Anchor>
     </div>
+    <span class='hero__border'></span>
+  </div>
 </section>
 
 <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const hero = document.getElementById('home');
-        hero?.addEventListener('click', () => {
-            // hero.classList.add('fade-out-animation');
-            setTimeout(() => {
-                window.location.href = '#about';
-            }, 100);
-        });
+  window.addEventListener('DOMContentLoaded', () => {
+    const hero = document.getElementById('home');
+    hero?.addEventListener('click', () => {
+      // hero.classList.add('fade-out-animation');
+      setTimeout(() => {
+        window.location.href = '#about';
+      }, 100);
+    });
 
-        // const observer = new IntersectionObserver(
-        //     (entries) => {
-        //         entries.forEach((entry) => {
-        //             if (entry.isIntersecting) {
-        //                 entry.target.classList.add('fade-in-animation');
-        //                 entry.target.classList.remove('fade-out-animation');
-        //             } else {
-        //                 entry.target.classList.remove('fade-in-animation');
-        //                 entry.target.classList.add('fade-out-animation');
-        //             }
-        //         });
-        //     },
-        //     { threshold: 0.2 }
-        // );
+    // const observer = new IntersectionObserver(
+    //     (entries) => {
+    //         entries.forEach((entry) => {
+    //             if (entry.isIntersecting) {
+    //                 entry.target.classList.add('fade-in-animation');
+    //                 entry.target.classList.remove('fade-out-animation');
+    //             } else {
+    //                 entry.target.classList.remove('fade-in-animation');
+    //                 entry.target.classList.add('fade-out-animation');
+    //             }
+    //         });
+    //     },
+    //     { threshold: 0.2 }
+    // );
 
-        // if(hero) {
-        //     observer.observe(hero);
-        // }
-    })
+    // if(hero) {
+    //     observer.observe(hero);
+    // }
+  });
 </script>

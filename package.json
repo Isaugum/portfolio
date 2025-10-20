@@ -6,7 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky",
+    "lint": "eslint . --ext .ts,.tsx,.astro,.js,.jsx",
+    "lint:fix": "eslint . --ext .ts,.tsx,.astro,.js,.jsx --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "type-check": "astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -22,6 +28,23 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.3.1",
+    "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.4",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.93.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": ["eslint --fix", "prettier --write"],
+    "*.astro": ["eslint --fix", "prettier --write"],
+    "*.{json,md,yml,yaml}": ["prettier --write"],
+    "*.{scss,css}": ["prettier --write"]
   }
 }
