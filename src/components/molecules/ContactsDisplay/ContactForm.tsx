@@ -67,11 +67,7 @@ export default () => {
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', formData);
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
@@ -100,14 +96,12 @@ export default () => {
 
       {submitStatus === 'success' && (
         <div className='contact-form__success'>
-          <span className='contact-form__success-icon'>✅</span>
           <p>Thank you! Your message has been sent successfully.</p>
         </div>
       )}
 
       {submitStatus === 'error' && (
         <div className='contact-form__error'>
-          <span className='contact-form__error-icon'>❌</span>
           <p>
             Sorry, there was an error sending your message. Please try again.
           </p>
@@ -202,10 +196,7 @@ export default () => {
               Sending...
             </>
           ) : (
-            <>
-              <span className='contact-form__submit-icon'>🚀</span>
-              Send Message
-            </>
+            <>Send Message</>
           )}
         </button>
       </form>

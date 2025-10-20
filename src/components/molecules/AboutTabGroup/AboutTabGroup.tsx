@@ -15,14 +15,12 @@ interface TimelineItem {
   year: string;
   title: string;
   description: string;
-  icon: string;
   type: string;
 }
 
 interface Achievement {
   title: string;
   description: string;
-  icon: string;
   year: string;
 }
 
@@ -104,14 +102,12 @@ export default ({
   const StatCard = ({
     label,
     value,
-    icon,
   }: {
     label: string;
     value: string | number;
-    icon: string;
   }) => (
     <div className='stat-card'>
-      <div className='stat-card__icon'>{icon}</div>
+      <div className='stat-card__icon' aria-hidden='true'></div>
       <div className='stat-card__value'>{value}</div>
       <div className='stat-card__label'>{label}</div>
     </div>
@@ -120,7 +116,7 @@ export default ({
   const TimelineItem = ({ item }: { item: TimelineItem }) => (
     <div className={`timeline-item timeline-item--${item.type}`}>
       <div className='timeline-item__marker'>
-        <div className='timeline-item__icon'>{item.icon}</div>
+        <div className='timeline-item__icon' aria-hidden='true'></div>
         <div className='timeline-item__year'>{item.year}</div>
       </div>
       <div className='timeline-item__content'>
@@ -132,7 +128,7 @@ export default ({
 
   const AchievementCard = ({ achievement }: { achievement: Achievement }) => (
     <div className='achievement-card'>
-      <div className='achievement-card__icon'>{achievement.icon}</div>
+      <div className='achievement-card__icon' aria-hidden='true'></div>
       <div className='achievement-card__content'>
         <h4 className='achievement-card__title'>{achievement.title}</h4>
         <p className='achievement-card__description'>
@@ -146,20 +142,17 @@ export default ({
   const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
     <div className='testimonial-card'>
       <div className='testimonial-card__header'>
-        <div className='testimonial-card__avatar'>{testimonial.avatar}</div>
+        <div className='testimonial-card__avatar' aria-hidden='true'></div>
         <div className='testimonial-card__info'>
           <h4 className='testimonial-card__name'>{testimonial.name}</h4>
           <p className='testimonial-card__role'>
             {testimonial.role} at {testimonial.company}
           </p>
         </div>
-        <div className='testimonial-card__rating'>
-          {[...Array(testimonial.rating)].map((_, i) => (
-            <span key={i} className='testimonial-card__star'>
-              ⭐
-            </span>
-          ))}
-        </div>
+        <div
+          className='testimonial-card__rating'
+          aria-label={`${testimonial.rating} out of 5`}
+        ></div>
       </div>
       <blockquote className='testimonial-card__content'>
         "{testimonial.content}"
@@ -172,19 +165,19 @@ export default ({
       <TabGroup>
         <TabList className='about-tab-group__header'>
           <Tab className='about-tab-group__btn'>
-            <span className='about-tab-group__icon'>📊</span>
+            <span className='about-tab-group__icon' aria-hidden='true'></span>
             Stats
           </Tab>
           <Tab className='about-tab-group__btn'>
-            <span className='about-tab-group__icon'>📅</span>
+            <span className='about-tab-group__icon' aria-hidden='true'></span>
             Timeline
           </Tab>
           <Tab className='about-tab-group__btn'>
-            <span className='about-tab-group__icon'>🏆</span>
+            <span className='about-tab-group__icon' aria-hidden='true'></span>
             Achievements
           </Tab>
           <Tab className='about-tab-group__btn'>
-            <span className='about-tab-group__icon'>💬</span>
+            <span className='about-tab-group__icon' aria-hidden='true'></span>
             Testimonials
           </Tab>
         </TabList>
@@ -195,40 +188,34 @@ export default ({
               <StatCard
                 label='Years Coding'
                 value={animatedStats.codingYears}
-                icon='💻'
               />
               <StatCard
                 label='Projects Completed'
                 value={animatedStats.projectsCompleted}
-                icon='🚀'
               />
               <StatCard
                 label='Languages Learned'
                 value={animatedStats.languagesLearned}
-                icon='🌐'
               />
               <StatCard
                 label='Certifications'
                 value={animatedStats.certifications}
-                icon='📜'
               />
               <StatCard
                 label='GitHub Commits'
                 value={animatedStats.githubCommits.toLocaleString()}
-                icon='📝'
               />
               <StatCard
                 label='Lines of Code'
                 value={animatedStats.linesOfCode}
-                icon='⚡'
               />
             </div>
           </TabPanel>
 
           <TabPanel className='about-tab-group__content'>
             <div className='timeline'>
-              {timeline?.map((item, index) => (
-                <TimelineItem key={item.year} item={item} index={index} />
+              {timeline?.map(item => (
+                <TimelineItem key={item.year} item={item} />
               ))}
             </div>
           </TabPanel>

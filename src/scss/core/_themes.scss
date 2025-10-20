@@ -1,9 +1,21 @@
 @use 'variables' as vars;
+@use 'sass:color';
 
 @each $theme-name, $theme-map in vars.$colors {
   [data-theme='#{$theme-name}'] {
     @each $key, $value in $theme-map {
       --color-#{$key}: #{$value};
+      @if $key == accent {
+        // Precomputed translucent accents for consistent theming in CSS
+        --color-accent-10: #{color.change($value, $alpha: 0.1)};
+        --color-accent-20: #{color.change($value, $alpha: 0.2)};
+        --color-accent-30: #{color.change($value, $alpha: 0.3)};
+      }
+      @if $key == background {
+        // RGB channels for backdrops
+        --color-background-rgb:
+          #{color.red($value)}, #{color.green($value)}, #{color.blue($value)};
+      }
     }
     --font-heading: 'VT323', monospace;
     --font-body: 'IBM Plex Mono', monospace;

@@ -1,33 +1,58 @@
 @use 'sass:color';
 
-$base-bg: #0b0b0b;
-$base-text: #e6e6e6;
-$base-accent: #00ffaa;
-$red-accent: #ff0000;
-$pink-accent: #f527d3;
+$base-bg: #0e0e0f;
+$base-text: #e2e2e2;
+// Muted accent shifted toward teal-gray and desaturated
+$base-accent: #5aa39a;
+// Additional subdued accents for alternative themes
+$red-accent: #b25a5a;
+$pink-accent: #a05f95;
+// New accent options (muted palette)
+$blue-accent: #6b86a6;
+$purple-accent: #7a6fa3;
+$amber-accent: #a08a57;
 
 $colors: (
   light: (
-    background: $base-bg,
-    text-main: $base-text,
+    background: #f7f7f8,
+    text-main: #1f1f22,
     accent: $base-accent,
+    accent-darker: color.adjust($base-accent, $lightness: -25%),
   ),
   dark: (
     background: $base-bg,
     text-main: $base-text,
     accent: $base-accent,
-    accent-darker: color.adjust($base-accent, $lightness: -40%),
+    accent-darker: color.adjust($base-accent, $lightness: -25%),
   ),
   dark-red: (
     background: $base-bg,
     text-main: $base-text,
     accent: $red-accent,
-    accent-darker: color.adjust($red-accent, $lightness: -40%),
+    accent-darker: color.adjust($red-accent, $lightness: -25%),
   ),
   dark-pink: (
     background: $base-bg,
     text-main: $base-text,
     accent: $pink-accent,
-    accent-darker: color.adjust($pink-accent, $lightness: -40%),
+    accent-darker: color.adjust($pink-accent, $lightness: -25%),
+  ),
+  dark-blue: (
+    background: $base-bg,
+    text-main: $base-text,
+    accent: $blue-accent,
+    accent-darker: color.adjust($blue-accent, $lightness: -25%),
+  ),
+  dark-purple: (
+    background: $base-bg,
+    text-main: $base-text,
+    accent: $purple-accent,
+    accent-darker: color.adjust($purple-accent, $lightness: -25%),
+  ),
+  dark-amber: (
+    background: $base-bg,
+    text-main: $base-text,
+    accent: $amber-accent,
+    accent-darker: color.adjust($amber-accent, $lightness: -25%),
   ),
 );

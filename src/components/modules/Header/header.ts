@@ -1,3 +1,9 @@
+import {
+  applyHtmlLang,
+  getLanguage,
+  setLanguage,
+  translateNav,
+} from '@utils/i18n';
 import { changeTheme } from '@utils/layout.utils';
 
 export const initHeader = () => {
@@ -12,10 +18,14 @@ export const initHeader = () => {
   const progressBar = document.querySelector(
     '.header__progress-bar'
   ) as HTMLElement;
+  const langToggle = document.querySelector(
+    '.header__lang-toggle'
+  ) as HTMLElement;
   const navLinks = document.querySelectorAll('.nav__link');
 
   let isMenuOpen = false;
   let currentTheme = 'dark';
+  let currentLang = getLanguage();
 
   // Mobile menu toggle
   if (mobileToggle) {
@@ -38,15 +48,30 @@ export const initHeader = () => {
     themeToggle.addEventListener('click', () => {
       currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
       changeTheme();
-
-      // Update theme icon
-      const themeIcon = themeToggle.querySelector(
-        '.header__theme-icon'
-      ) as HTMLElement;
-      if (themeIcon) {
-        themeIcon.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
-      }
     });
+  }
+
+  // Language toggle
+  const updateNavLanguage = () => {
+    const links = document.querySelectorAll('.nav__link');
+    links.forEach(link => {
+      const href = (link as HTMLAnchorElement).getAttribute('href') || '';
+      const key = href.replace('#', '');
+      const label = translateNav(key);
+      if (label) link.textContent = label.toUpperCase();
+    });
+  };
+
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'sl' : 'en';
+      setLanguage(currentLang);
+      applyHtmlLang();
+      (langToggle as HTMLElement).textContent = currentLang.toUpperCase();
+      updateNavLanguage();
+    });
+    // initialize
+    (langToggle as HTMLElement).textContent = currentLang.toUpperCase();
   }
 
   // Scroll progress indicator
@@ -104,6 +129,9 @@ export const initHeader = () => {
 
       if (href?.startsWith('#')) {
         e.preventDefault();
+        // Immediately update active state on click
+        navLinks.forEach(l => l.classList.remove('nav__link--active'));
+        link.classList.add('nav__link--active');
         const targetSection = document.querySelector(href);
 
         if (targetSection) {
@@ -161,4 +189,6 @@ export const initHeader = () => {
   updateProgress();
   updateActiveSection();
   updateHeaderScroll();
+  applyHtmlLang();
+  updateNavLanguage();
 };

@@ -39,9 +39,9 @@ export default ({ skills }: SkillsTabGroupProps) => {
   }, [skills]);
 
   const categories = [
-    { key: 'frontend', label: 'Frontend', icon: '🎨' },
-    { key: 'backend', label: 'Backend', icon: '⚙️' },
-    { key: 'tools', label: 'Tools & Others', icon: '🛠️' },
+    { key: 'frontend', label: 'Frontend', icon: '' },
+    { key: 'backend', label: 'Backend', icon: '' },
+    { key: 'tools', label: 'Tools & Others', icon: '' },
   ];
 
   const SkillBar = ({ skill }: { skill: Skill }) => {
@@ -83,7 +83,10 @@ export default ({ skills }: SkillsTabGroupProps) => {
         <TabList className='skills-tab-group__header'>
           {categories.map(category => (
             <Tab key={category.key} className='skills-tab-group__btn'>
-              <span className='skills-tab-group__icon'>{category.icon}</span>
+              <span
+                className='skills-tab-group__icon'
+                aria-hidden='true'
+              ></span>
               {category.label}
             </Tab>
           ))}
