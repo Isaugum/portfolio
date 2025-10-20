@@ -287,16 +287,16 @@
     position: absolute;
     inset: 0;
     // background-image: url('/bg-test.png');
-    background-image: url('/test2.webp');
+    background-image: url('/test.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -2;
 
     /* Dark overlay */
-    background-color: rgba(0, 0, 0, 0.5);
-    background-blend-mode: multiply;
-    opacity: 0.8;
+    // background-color: rgba(0, 0, 0, 0.2);
+    // background-blend-mode: multiply;
+    opacity: 0.5;
   }
 
   &__canvas,
