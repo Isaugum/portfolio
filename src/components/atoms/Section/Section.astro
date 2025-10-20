@@ -1,0 +1,40 @@
+---
+export interface Props {
+  id: string;
+  title?: string;
+  subtitle?: string;
+  class?: string;
+  decoration?: 'code' | 'tech' | 'none';
+  stagger?: boolean;
+}
+
+const {
+  id,
+  title,
+  subtitle,
+  class: className = '',
+  decoration = 'code',
+  stagger = false,
+} = Astro.props;
+
+const sectionClasses = [
+  'section--main',
+  decoration !== 'none'
+    ? `section--with-${decoration === 'code' ? 'decoration' : 'tech-decoration'}`
+    : '',
+  stagger ? 'section--staggered' : '',
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<section id={id} class={sectionClasses}>
+  {title && <h2 class='section__title text--h2'>{title}</h2>}
+
+  {subtitle && <p class='section__subtitle'>{subtitle}</p>}
+
+  <div class='section__content'>
+    <slot />
+  </div>
+</section>

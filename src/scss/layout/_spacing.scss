@@ -1,19 +1,19 @@
+@use 'breakpoints' as br;
+
 $space-scale: (
   xs: 0.25rem,
   sm: 0.5rem,
   md: 1rem,
   lg: 2rem,
   xl: 4rem,
+  xxl: 6rem,
 );
 
+// Margin utilities
 @each $name, $size in $space-scale {
   .m-#{$name} {
     margin: $size !important;
   }
-  .p-#{$name} {
-    padding: $size !important;
-  }
-
   .mt-#{$name} {
     margin-top: $size !important;
   }
@@ -26,7 +26,21 @@ $space-scale: (
   .mr-#{$name} {
     margin-right: $size !important;
   }
+  .mx-#{$name} {
+    margin-left: $size !important;
+    margin-right: $size !important;
+  }
+  .my-#{$name} {
+    margin-top: $size !important;
+    margin-bottom: $size !important;
+  }
+}
 
+// Padding utilities
+@each $name, $size in $space-scale {
+  .p-#{$name} {
+    padding: $size !important;
+  }
   .pt-#{$name} {
     padding-top: $size !important;
   }
@@ -38,5 +52,45 @@ $space-scale: (
   }
   .pr-#{$name} {
     padding-right: $size !important;
+  }
+  .px-#{$name} {
+    padding-left: $size !important;
+    padding-right: $size !important;
+  }
+  .py-#{$name} {
+    padding-top: $size !important;
+    padding-bottom: $size !important;
+  }
+}
+
+// Gap utilities for flexbox and grid
+@each $name, $size in $space-scale {
+  .gap-#{$name} {
+    gap: $size !important;
+  }
+}
+
+// Section spacing mixins
+@mixin section-spacing($top: 4rem, $bottom: 4rem) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+}
+
+@mixin responsive-section-spacing(
+  $mobile: 2rem,
+  $tablet: 4rem,
+  $desktop: 5rem
+) {
+  padding-top: $mobile;
+  padding-bottom: $mobile;
+
+  @include br.min-width(md) {
+    padding-top: $tablet;
+    padding-bottom: $tablet;
+  }
+
+  @include br.min-width(lg) {
+    padding-top: $desktop;
+    padding-bottom: $desktop;
   }
 }

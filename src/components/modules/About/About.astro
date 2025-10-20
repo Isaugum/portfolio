@@ -1,9 +1,9 @@
 ---
+import Section from '@components/atoms/Section/Section.astro';
 import AboutTabGroup from '@components/molecules/AboutTabGroup/AboutTabGroup.tsx';
 import ContactDisplay from '@components/molecules/ContactsDisplay/ContactDisplay.astro';
 import IntroductionDisplay from '@components/molecules/IntroductionDisplay/IntroductionDisplay.astro';
 import { getPageData } from '@database/request';
-import './About.scss';
 
 const { data } = await getPageData('about');
 
@@ -111,9 +111,8 @@ const testimonials = [
 ];
 ---
 
-<section id='about' class='container--main grid-main'>
+<Section id='about' title={data?.title ?? 'ABOUT'} decoration='code' stagger>
   <IntroductionDisplay
-    title={data?.title ?? 'ABOUT'}
     text={data?.text ??
       'Passionate full-stack developer with 4+ years of experience building modern web applications. I love creating user-friendly interfaces and robust backend systems.'}
   />
@@ -127,4 +126,4 @@ const testimonials = [
   />
 
   <ContactDisplay />
-</section>
+</Section>

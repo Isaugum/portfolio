@@ -1,0 +1,80 @@
+---
+export interface Props {
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  class?: string;
+  animated?: boolean;
+}
+
+const { level = 2, class: className = '', animated = true } = Astro.props;
+
+const titleClasses = [
+  'section__title',
+  `text--h${level}`,
+  animated ? 'section__title--animated' : '',
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+{
+  level === 1 && (
+    <h1 class={titleClasses}>
+      <slot />
+    </h1>
+  )
+}
+{
+  level === 2 && (
+    <h2 class={titleClasses}>
+      <slot />
+    </h2>
+  )
+}
+{
+  level === 3 && (
+    <h3 class={titleClasses}>
+      <slot />
+    </h3>
+  )
+}
+{
+  level === 4 && (
+    <h4 class={titleClasses}>
+      <slot />
+    </h4>
+  )
+}
+{
+  level === 5 && (
+    <h5 class={titleClasses}>
+      <slot />
+    </h5>
+  )
+}
+{
+  level === 6 && (
+    <h6 class={titleClasses}>
+      <slot />
+    </h6>
+  )
+}
+
+<style>
+  .section__title--animated {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: var(--color-accent);
+      border-radius: 1px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+  }
+</style>

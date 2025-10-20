@@ -1,7 +1,7 @@
 ---
+import Section from '@components/atoms/Section/Section.astro';
 import TabGroup from '@components/molecules/TabGroup/TabGroup';
 import { getData, getPageData } from '@database/request';
-import './Projects.scss';
 
 const { data } = await getPageData('projects');
 const { data: projectsData } = await getData('projects', 'portfolio');
@@ -83,7 +83,6 @@ const projects =
   projectsData && projectsData.length > 0 ? projectsData : sampleProjects;
 ---
 
-<section id='projects' class='container--main grid-main'>
-  <h2 class='introduction__title text--h2'>PROJECTS</h2>
+<Section id='projects' title='PROJECTS' decoration='code' stagger>
   <TabGroup client:load projects={projects} />
-</section>
+</Section>

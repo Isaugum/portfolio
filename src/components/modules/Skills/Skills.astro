@@ -1,8 +1,8 @@
 ---
+import Section from '@components/atoms/Section/Section.astro';
 import IconDisplayGird from '@components/molecules/IconDisplayGrid/IconDisplayGird.astro';
 import SkillsTabGroup from '@components/molecules/SkillsTabGroup/SkillsTabGroup.tsx';
 import { getPageData } from '@database/request';
-import './Skills.scss';
 
 const { data } = await getPageData('skills');
 
@@ -62,18 +62,17 @@ const skillsData = {
 };
 ---
 
-<section id='skills' class='container--main grid-main'>
-  <h2 class='skills__title text--h2'>TECHNOLOGY AND SKILLS</h2>
-  <p class='skills__text'>
-    I specialize in full-stack development with expertise in modern web
-    technologies. Here's a breakdown of my technical skills and proficiency
-    levels across different categories.
-  </p>
-
+<Section
+  id='skills'
+  title='TECHNOLOGY AND SKILLS'
+  subtitle="I specialize in full-stack development with expertise in modern web technologies. Here's a breakdown of my technical skills and proficiency levels across different categories."
+  decoration='tech'
+  stagger
+>
   <SkillsTabGroup client:load skills={skillsData} />
 
   <!-- Keep the original icon grid as a visual complement -->
   <div class='skills__visual'>
     <IconDisplayGird />
   </div>
-</section>
+</Section>

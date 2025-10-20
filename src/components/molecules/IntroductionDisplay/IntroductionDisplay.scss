@@ -4,28 +4,19 @@
   @include br.min-width(lg) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
     padding: 4rem;
-  }
-
-  &__title {
-    width: 100%;
-    text-align: center;
-
-    margin-bottom: 1rem;
-
-    @include br.min-width(lg) {
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
   }
 
   &__text {
     padding: 1rem 2rem;
+    text-align: center;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
 
     @include br.min-width(lg) {
-      grid-row: 2;
+      grid-row: 1;
       grid-column: 2;
+      text-align: left;
     }
   }
 }

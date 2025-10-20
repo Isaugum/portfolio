@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $base-bg: #0b0b0b;
 $base-text: #e6e6e6;
 $base-accent: #00ffaa;
@@ -14,18 +16,18 @@ $colors: (
     background: $base-bg,
     text-main: $base-text,
     accent: $base-accent,
-    accent-darker: darken($base-accent, 40%),
+    accent-darker: color.adjust($base-accent, $lightness: -40%),
   ),
   dark-red: (
     background: $base-bg,
     text-main: $base-text,
     accent: $red-accent,
-    accent-darker: darken($red-accent, 40%),
+    accent-darker: color.adjust($red-accent, $lightness: -40%),
   ),
   dark-pink: (
     background: $base-bg,
     text-main: $base-text,
     accent: $pink-accent,
-    accent-darker: darken($pink-accent, 40%),
+    accent-darker: color.adjust($pink-accent, $lightness: -40%),
   ),
 );

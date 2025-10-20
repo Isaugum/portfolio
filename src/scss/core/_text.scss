@@ -1,23 +1,155 @@
+@use '../layout/breakpoints' as br;
+
 .text {
+  // Heading styles
   &--h1 {
     font-size: 4rem;
     line-height: 4.5rem;
-
     margin: 1rem 0;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+
+    @include br.max-width(md) {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
   }
 
   &--h2 {
     font-size: 2.5rem;
+    line-height: 3rem;
+    margin: 1rem 0;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+
+    @include br.max-width(md) {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
   }
 
   &--h3 {
     font-size: 1.5rem;
-
+    line-height: 2rem;
     margin: 1rem 0;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+
+    @include br.max-width(md) {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
   }
 
+  &--h4 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin: 0.75rem 0;
+    font-weight: 500;
+  }
+
+  &--h5 {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    margin: 0.5rem 0;
+    font-weight: 500;
+  }
+
+  &--h6 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0.5rem 0;
+    font-weight: 500;
+  }
+
+  // Body text styles
   &--general {
     font-size: 1rem;
+    line-height: 1.6;
     margin: 1rem 0;
+    font-weight: 400;
+  }
+
+  &--large {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin: 1rem 0;
+    font-weight: 400;
+  }
+
+  &--small {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0.75rem 0;
+    font-weight: 400;
+  }
+
+  // Utility text styles
+  &--center {
+    text-align: center;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &--lowercase {
+    text-transform: lowercase;
+  }
+
+  &--capitalize {
+    text-transform: capitalize;
+  }
+
+  // Color variants
+  &--primary {
+    color: var(--color-text-main);
+  }
+
+  &--secondary {
+    color: var(--color-text-secondary);
+  }
+
+  &--accent {
+    color: var(--color-accent);
+  }
+
+  &--muted {
+    color: var(--color-text-muted);
+    opacity: 0.7;
+  }
+
+  // Weight variants
+  &--light {
+    font-weight: 300;
+  }
+
+  &--normal {
+    font-weight: 400;
+  }
+
+  &--medium {
+    font-weight: 500;
+  }
+
+  &--semibold {
+    font-weight: 600;
+  }
+
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--extrabold {
+    font-weight: 800;
   }
 }

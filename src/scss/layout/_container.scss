@@ -1,10 +1,72 @@
 @use 'breakpoints' as br;
 
 .container {
+  width: 100%;
+  margin: 0 auto;
+
+  // Main container for sections
   &--main {
     width: 100%;
+    max-width: 100%;
   }
 
+  // Size variants
+  &--sm {
+    max-width: 640px;
+  }
+  &--md {
+    max-width: 768px;
+  }
+  &--lg {
+    max-width: 1024px;
+  }
+  &--xl {
+    max-width: 1280px;
+  }
+  &--full {
+    max-width: 100%;
+  }
+
+  // Padding variants
+  &--padded {
+    padding: 0 1rem;
+
+    @include br.min-width(md) {
+      padding: 0 2rem;
+    }
+
+    @include br.min-width(lg) {
+      padding: 0 3rem;
+    }
+  }
+
+  // Grid container
+  &--grid {
+    display: grid;
+    gap: 2rem;
+
+    @include br.min-width(md) {
+      gap: 3rem;
+    }
+
+    @include br.min-width(lg) {
+      gap: 4rem;
+    }
+  }
+
+  // Flex container
+  &--flex {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include br.min-width(md) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  // Dictionary layout (keeping existing functionality)
   &__dictionary {
     display: grid;
     grid-template-columns: 1fr;
@@ -15,10 +77,6 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    // @include br.min-width(lg) {
-    //     grid-template-columns: 1fr;
-    // }
-
     &__item {
       display: flex;
       flex-direction: column;
@@ -26,13 +84,10 @@
 
     &__key {
       position: relative;
-
       margin-bottom: 0.5rem;
       padding-bottom: 0.5rem;
-
       color: var(--color-accent);
       font-size: 0.8rem;
-
       text-transform: capitalize;
 
       &::after {

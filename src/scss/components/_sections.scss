@@ -1,0 +1,148 @@
+@use '../layout/breakpoints' as br;
+@use '../core/mixins' as *;
+
+// Reusable section styles
+
+.section {
+  // Base section styles
+  &--main {
+    text-shadow: none;
+    position: relative;
+    overflow: hidden;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    @include br.min-width(md) {
+      scroll-margin-top: 8vh;
+    }
+  }
+
+  // Section with floating decoration
+  &--with-decoration {
+    @include floating-decoration();
+  }
+
+  // Section with tech decoration
+  &--with-tech-decoration {
+    @include floating-decoration('{ }', 15%, 8%, floatTech);
+  }
+
+  // Section title
+  &__title {
+    @include section-title();
+
+    @include br.min-width(md) {
+      margin-bottom: 4rem;
+    }
+
+    @include br.min-width(lg) {
+      margin-bottom: 5rem;
+    }
+  }
+
+  // Section subtitle/description
+  &__subtitle {
+    padding: 1rem 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+
+    @include br.min-width(lg) {
+      padding: 1rem 8rem;
+    }
+  }
+
+  // Section content wrapper
+  &__content {
+    @include responsive-padding();
+  }
+
+  // Section with grid layout
+  &--grid {
+    display: grid;
+    gap: 2rem;
+
+    @include br.min-width(md) {
+      gap: 3rem;
+    }
+
+    @include br.min-width(lg) {
+      gap: 4rem;
+    }
+  }
+
+  // Section with flex layout
+  &--flex {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include br.min-width(md) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
+
+// Staggered animation for section children
+.section--staggered {
+  .section__item {
+    @include fade-in-stagger();
+
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+  }
+
+  // Project cards specific animation
+  .projects-grid .project-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+
+    &:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+  }
+}
+
+// Skills specific styles
+.skills__visual {
+  margin-top: 3rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}

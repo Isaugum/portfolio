@@ -1,0 +1,59 @@
+---
+export interface Props {
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  class?: string;
+  padding?: boolean;
+}
+
+const { size = 'lg', class: className = '', padding = true } = Astro.props;
+
+const containerClasses = [
+  'container',
+  `container--${size}`,
+  padding ? 'container--padded' : '',
+  className,
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<div class={containerClasses}>
+  <slot />
+</div>
+
+<style>
+  @use '../../scss/layout/breakpoints' as br;
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+
+    &--sm {
+      max-width: 640px;
+    }
+    &--md {
+      max-width: 768px;
+    }
+    &--lg {
+      max-width: 1024px;
+    }
+    &--xl {
+      max-width: 1280px;
+    }
+    &--full {
+      max-width: 100%;
+    }
+
+    &--padded {
+      padding: 0 1rem;
+
+      @include br.min-width(md) {
+        padding: 0 2rem;
+      }
+
+      @include br.min-width(lg) {
+        padding: 0 3rem;
+      }
+    }
+  }
+</style>
