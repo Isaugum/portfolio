@@ -1,0 +1,251 @@
+@use '@layout/breakpoints' as br;
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+
+  &__canvas {
+    opacity: 0.3;
+  }
+
+  // Geometric shapes
+  &__shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__shape {
+    position: absolute;
+    opacity: 0.05;
+    animation: float 20s ease-in-out infinite;
+
+    &--circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--color-accent), transparent);
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    &--hexagon {
+      width: 150px;
+      height: 150px;
+      background: var(--color-accent);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      top: 60%;
+      right: 15%;
+      animation-delay: -5s;
+    }
+
+    &--triangle {
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 173px solid var(--color-accent);
+      top: 30%;
+      right: 30%;
+      animation-delay: -10s;
+    }
+
+    &--square {
+      width: 120px;
+      height: 120px;
+      background: var(--color-accent);
+      transform: rotate(45deg);
+      bottom: 25%;
+      left: 20%;
+      animation-delay: -15s;
+    }
+
+    &--large {
+      width: 300px;
+      height: 300px;
+      top: 70%;
+      left: 50%;
+      animation-delay: -8s;
+    }
+
+    &--small {
+      width: 80px;
+      height: 80px;
+      top: 15%;
+      left: 70%;
+      animation-delay: -12s;
+    }
+  }
+
+  // Gradient overlays
+  &__gradients {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    animation: gradientShift 30s ease-in-out infinite;
+
+    &--radial-1 {
+      background: radial-gradient(circle at 20% 80%, var(--color-accent) 0%, transparent 70%);
+      animation-delay: 0s;
+    }
+
+    &--radial-2 {
+      background: radial-gradient(circle at 80% 20%, var(--color-accent) 0%, transparent 70%);
+      animation-delay: -10s;
+    }
+
+    &--linear-1 {
+      background: linear-gradient(45deg, var(--color-accent) 0%, transparent 50%);
+      animation-delay: -5s;
+    }
+
+    &--linear-2 {
+      background: linear-gradient(-45deg, var(--color-accent) 0%, transparent 50%);
+      animation-delay: -15s;
+    }
+  }
+
+  // Noise texture
+  &__noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    animation: noiseShift 40s linear infinite;
+  }
+
+  // Responsive adjustments
+  @include br.max-width(lg) {
+    &__shape {
+      &--circle {
+        width: 150px;
+        height: 150px;
+      }
+
+      &--hexagon {
+        width: 100px;
+        height: 100px;
+      }
+
+      &--triangle {
+        border-left: 80px solid transparent;
+        border-right: 80px solid transparent;
+        border-bottom: 140px solid var(--color-accent);
+      }
+
+      &--square {
+        width: 80px;
+        height: 80px;
+      }
+
+      &--large {
+        width: 200px;
+        height: 200px;
+      }
+
+      &--small {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  @include br.max-width(md) {
+    &__shape {
+      opacity: 0.03;
+    }
+
+    &__gradient {
+      opacity: 0.02;
+    }
+
+    &__noise {
+      opacity: 0.01;
+    }
+  }
+}
+
+// Animations
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-30px) rotate(270deg);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.03;
+  }
+  25% {
+    transform: scale(1.1) rotate(90deg);
+    opacity: 0.05;
+  }
+  50% {
+    transform: scale(0.9) rotate(180deg);
+    opacity: 0.02;
+  }
+  75% {
+    transform: scale(1.05) rotate(270deg);
+    opacity: 0.04;
+  }
+}
+
+@keyframes noiseShift {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+  50% {
+    transform: translateX(5px) translateY(-10px);
+  }
+  75% {
+    transform: translateX(-5px) translateY(5px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+// Performance optimizations
+@media (prefers-reduced-motion: reduce) {
+  .animated-background {
+    &__shape,
+    &__gradient,
+    &__noise {
+      animation: none;
+    }
+  }
+}
