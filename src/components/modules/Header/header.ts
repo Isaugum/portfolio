@@ -29,13 +29,11 @@ export const initHeader = () => {
   let programmaticScroll = false;
   let scrollEndTimer: number | undefined;
 
-  // Mobile menu toggle
   if (mobileToggle) {
     mobileToggle.addEventListener('click', () => {
       isMenuOpen = !isMenuOpen;
       nav.classList.toggle('nav--open', isMenuOpen);
 
-      // Animate hamburger
       const hamburger = mobileToggle.querySelector(
         '.header__hamburger'
       ) as HTMLElement;
@@ -45,7 +43,6 @@ export const initHeader = () => {
     });
   }
 
-  // Theme toggle
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
       currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -53,7 +50,6 @@ export const initHeader = () => {
     });
   }
 
-  // Language toggle
   const updateNavLanguage = () => {
     const links = document.querySelectorAll('.nav__link');
     links.forEach(link => {
@@ -116,7 +112,6 @@ export const initHeader = () => {
     });
   };
 
-  // Header scroll effect
   const updateHeaderScroll = () => {
     if (window.scrollY > 50) {
       header?.classList.add('header--scrolled');
@@ -125,14 +120,12 @@ export const initHeader = () => {
     }
   };
 
-  // Smooth scroll for navigation links
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       const href = (link as HTMLAnchorElement).getAttribute('href');
 
       if (href?.startsWith('#')) {
         e.preventDefault();
-        // Immediately update active state on click
         programmaticScroll = true;
         navLinks.forEach(l => l.classList.remove('nav__link--active'));
         link.classList.add('nav__link--active');
@@ -148,14 +141,12 @@ export const initHeader = () => {
             behavior: 'smooth',
           });
 
-          // Debounce scroll end to re-enable scroll-based updates
           if (scrollEndTimer) window.clearTimeout(scrollEndTimer);
           scrollEndTimer = window.setTimeout(() => {
             programmaticScroll = false;
             updateActiveSection();
           }, 250);
 
-          // Close mobile menu if open
           if (isMenuOpen) {
             isMenuOpen = false;
             nav?.classList.remove('nav--open');
@@ -171,7 +162,6 @@ export const initHeader = () => {
     });
   });
 
-  // Event listeners
   window.addEventListener('scroll', () => {
     updateProgress();
     if (programmaticScroll) {
@@ -186,25 +176,27 @@ export const initHeader = () => {
     updateHeaderScroll();
   });
 
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', e => {
-    if (
-      isMenuOpen &&
-      !nav.contains(e.target as Node) &&
-      !mobileToggle.contains(e.target as Node)
-    ) {
-      isMenuOpen = false;
-      nav?.classList.remove('nav--open');
-      const hamburger = mobileToggle?.querySelector(
-        '.header__hamburger'
-      ) as HTMLElement;
-      if (hamburger) {
+  document.addEventListener('click', () => {
+    // if (
+    //   !nav.contains(e.target as Node) &&
+    //   !mobileToggle.contains(e.target as Node)
+    // ) {
+    // nav?.classList.remove('nav--open');
+    const hamburger = mobileToggle?.querySelector(
+      '.header__hamburger'
+    ) as HTMLElement;
+    if (hamburger) {
+      if (hamburger.classList.contains('header__hamburger--closed')) {
+        hamburger.classList.remove('header__hamburger--closed');
+        hamburger.classList.add('header__hamburger--open');
+      } else {
         hamburger.classList.remove('header__hamburger--open');
+        hamburger.classList.add('header__hamburger--closed');
       }
     }
+    // }
   });
 
-  // Initialize
   updateProgress();
   updateActiveSection();
   updateHeaderScroll();
