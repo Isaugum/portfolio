@@ -42,4 +42,10 @@ const getHeader = async () => {
   return { data, error };
 };
 
-export { getData, getHeader, getPageData, getSkills };
+const getProjectsData = async () => {
+  const { data, error } = await supabase.from('projects').select();
+
+  return { data, error };
+};
+
+export { getData, getHeader, getPageData, getProjectsData, getSkills };

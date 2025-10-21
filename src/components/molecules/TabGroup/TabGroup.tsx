@@ -1,4 +1,5 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
+import { useMemo } from 'react';
 import './TabGroup.scss';
 
 interface Project {
@@ -18,69 +19,13 @@ interface TabGroupProps {
 }
 
 export default ({ projects = [] }: TabGroupProps) => {
-  // Group projects by category
-  const categories = Array.from(new Set(projects.map(p => p.category)));
+  const displayCategories = useMemo(() => {
+    const uniqueCategories = Array.from(
+      new Set(projects.map(p => p.category).filter(Boolean))
+    );
 
-  // Sample data if no projects provided
-  const sampleProjects: Project[] = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      description:
-        'A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, inventory management, and admin dashboard.',
-      technologies: [
-        'React',
-        'Node.js',
-        'PostgreSQL',
-        'Stripe',
-        'Tailwind CSS',
-      ],
-      imageUrl: '/api/placeholder/400/200',
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example',
-      featured: true,
-      category: 'Web Development',
-    },
-    {
-      id: 2,
-      title: 'Task Management App',
-      description:
-        'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      technologies: ['Vue.js', 'Socket.io', 'MongoDB', 'Express'],
-      imageUrl: '/api/placeholder/400/200',
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example',
-      category: 'Web Development',
-    },
-    {
-      id: 3,
-      title: 'Mobile Weather App',
-      description:
-        'A cross-platform mobile weather application with location-based forecasts, weather alerts, and beautiful animations.',
-      technologies: ['React Native', 'Expo', 'OpenWeather API'],
-      imageUrl: '/api/placeholder/400/200',
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example',
-      category: 'Mobile Development',
-    },
-    {
-      id: 4,
-      title: 'Data Visualization Dashboard',
-      description:
-        'An interactive dashboard for visualizing complex datasets with real-time updates and customizable charts.',
-      technologies: ['D3.js', 'Python', 'Flask', 'SQLite'],
-      imageUrl: '/api/placeholder/400/200',
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/example',
-      category: 'Data Science',
-    },
-  ];
-
-  const displayProjects = projects.length > 0 ? projects : sampleProjects;
-  const displayCategories =
-    categories.length > 0
-      ? categories
-      : ['All', 'Web Development', 'Mobile Development', 'Data Science'];
+    return ['All', ...uniqueCategories];
+  }, []);
 
   return (
     <TabGroup className={'tab-group'}>
@@ -95,7 +40,7 @@ export default ({ projects = [] }: TabGroupProps) => {
         {displayCategories.map(category => (
           <TabPanel key={category} className={'tab-group__content'}>
             <div className='projects-grid'>
-              {displayProjects
+              {projects
                 .filter(
                   project => category === 'All' || project.category === category
                 )
