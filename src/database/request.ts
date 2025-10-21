@@ -23,6 +23,8 @@ const getData = async (table: string, scope?: string) => {
 const getSkills = async () => {
   const { data, error } = await supabase.from('skills').select();
 
+  const order = ['frontend', 'backend', 'tools']; // or 'tools and others'
+
   const groupedData = data?.reduce((acc, skill) => {
     const { category, ...rest } = skill;
     if (!acc[category]) acc[category] = [];
@@ -30,7 +32,11 @@ const getSkills = async () => {
     return acc;
   }, {});
 
-  return { data: groupedData, error };
+  const orderedGroupedData = Object.fromEntries(
+    order.filter(key => groupedData[key]).map(key => [key, groupedData[key]])
+  );
+
+  return { data: orderedGroupedData, error };
 };
 
 const getHeader = async () => {
