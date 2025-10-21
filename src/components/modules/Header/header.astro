@@ -2,7 +2,9 @@
 import Anchor from '@components/atoms/Anchor/Anchor.astro';
 import MainLogo from '@public/logo.svg';
 import './header.scss';
-import { NAV_ELEMENTS } from './header.content';
+import { getHeader } from '@database/request';
+
+const { data: navElements } = await getHeader();
 ---
 
 <header class='header'>
@@ -17,7 +19,7 @@ import { NAV_ELEMENTS } from './header.content';
       <MainLogo class='header__logo' />
     </a>
     {
-      NAV_ELEMENTS.map((elem: { text: string; href: string }) => {
+      navElements?.map((elem: { text: string; href: string }) => {
         return (
           <Anchor className='nav__link text--h3' href={elem.href}>
             {elem.text}

@@ -33,4 +33,13 @@ const getSkills = async () => {
   return { data: groupedData, error };
 };
 
-export { getData, getPageData, getSkills };
+const getHeader = async () => {
+  const { data, error } = await supabase
+    .from('nav_elements')
+    .select()
+    .order('order', { ascending: true });
+
+  return { data, error };
+};
+
+export { getData, getHeader, getPageData, getSkills };

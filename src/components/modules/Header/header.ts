@@ -49,11 +49,9 @@ export const initHeader = () => {
       (langToggle as HTMLElement).textContent = currentLang.toUpperCase();
       updateNavLanguage();
     });
-    // initialize
     (langToggle as HTMLElement).textContent = currentLang.toUpperCase();
   }
 
-  // Scroll progress indicator
   const updateProgress = () => {
     const scrollTop = window.pageYOffset;
     const docHeight =
@@ -65,7 +63,26 @@ export const initHeader = () => {
     }
   };
 
-  // Active section highlighting
+  const scrollActiveLinkIntoView = (activeLink: Element) => {
+    const navContainer = activeLink.parentElement; // assumes navLinks share same parent
+    if (!navContainer) return;
+
+    const linkRect = (activeLink as HTMLElement).getBoundingClientRect();
+    const containerRect = navContainer.getBoundingClientRect();
+
+    // Calculate offset to center the link in the navbar
+    const offset =
+      linkRect.left -
+      containerRect.left -
+      containerRect.width / 2 +
+      linkRect.width / 2;
+
+    navContainer.scrollBy({
+      left: offset,
+      behavior: 'smooth',
+    });
+  };
+
   const updateActiveSection = () => {
     if (programmaticScroll) return;
     const sections = document.querySelectorAll('section[id]');
@@ -77,17 +94,16 @@ export const initHeader = () => {
       const sectionId = section.getAttribute('id');
 
       if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        // Remove active class from all links
         navLinks.forEach(link => {
           link.classList.remove('nav__link--active');
         });
 
-        // Add active class to current section link
         const activeLink = document.querySelector(
           `.nav__link[href="#${sectionId}"]`
         );
         if (activeLink) {
           activeLink.classList.add('nav__link--active');
+          scrollActiveLinkIntoView(activeLink);
         }
       }
     });
@@ -110,6 +126,7 @@ export const initHeader = () => {
         programmaticScroll = true;
         navLinks.forEach(l => l.classList.remove('nav__link--active'));
         link.classList.add('nav__link--active');
+        scrollActiveLinkIntoView(link);
         const targetSection = document.querySelector(href);
 
         if (targetSection) {

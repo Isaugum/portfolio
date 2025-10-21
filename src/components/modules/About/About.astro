@@ -1,7 +1,6 @@
 ---
 import Section from '@components/atoms/Section/Section.astro';
 import AboutTabGroup from '@components/molecules/AboutTabGroup/AboutTabGroup.tsx';
-import ContactDisplay from '@components/molecules/ContactsDisplay/ContactDisplay.astro';
 import IntroductionDisplay from '@components/molecules/IntroductionDisplay/IntroductionDisplay.astro';
 import { getPageData } from '@database/request';
 
@@ -18,6 +17,4 @@ const timeline = data?.data?.timeline;
   />
 
   <AboutTabGroup client:load stats={stats} timeline={timeline} />
-
-  <ContactDisplay />
 </Section>
