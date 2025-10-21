@@ -1,10 +1,10 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import './SkillsTabGroup.scss';
 
 interface Skill {
   name: string;
-  level: number;
+  level?: number;
   years: string;
   projects: number | string;
   icon: string;
@@ -27,22 +27,52 @@ export default ({ skills }: SkillsTabGroupProps) => {
     tools: [],
   });
 
+  const categories = useMemo(() => {
+    return Object.keys(skills ?? {}).map(key => {
+      let label = key.charAt(0).toUpperCase() + key.slice(1);
+
+      if (key === 'frontend') label = 'Frontend';
+      if (key === 'backend') label = 'Backend';
+      if (key === 'tools') label = 'Tools & Others';
+
+      return {
+        key,
+        label,
+        icon: '',
+      };
+    });
+  }, []);
+
+  function calculateProficiency(
+    years: number,
+    projects: string | number
+  ): number {
+    const projectCount = projects === 'All' ? 20 : Number(projects);
+    const score = years * 10 + projectCount * 2;
+    return Math.min(score, 90);
+  }
+
+  const enrichedSkills = useMemo(() => {
+    return Object.fromEntries(
+      Object.entries(skills ?? {}).map(([category, items]) => [
+        category,
+        items.map(item => ({
+          ...item,
+          level: calculateProficiency(item.years, item.projects),
+        })),
+      ])
+    );
+  }, []);
+
   useEffect(() => {
-    // Animate skill bars on mount
     const timer = setTimeout(() => {
-      if (skills) {
-        setAnimatedSkills(skills);
+      if (enrichedSkills) {
+        setAnimatedSkills(enrichedSkills);
       }
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [skills]);
-
-  const categories = [
-    { key: 'frontend', label: 'Frontend', icon: '' },
-    { key: 'backend', label: 'Backend', icon: '' },
-    { key: 'tools', label: 'Tools & Others', icon: '' },
-  ];
+  }, [enrichedSkills]);
 
   const SkillBar = ({ skill }: { skill: Skill }) => {
     const [isVisible, setIsVisible] = useState(false);
