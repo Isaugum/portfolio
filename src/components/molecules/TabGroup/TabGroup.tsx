@@ -7,9 +7,9 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
-  imageUrl?: string;
-  liveUrl?: string;
-  githubUrl?: string;
+  image_url?: string;
+  live_url?: string;
+  github_url?: string;
   featured?: boolean;
   category: string;
 }
@@ -46,18 +46,18 @@ export default ({ projects = [] }: TabGroupProps) => {
                 )
                 .map(project => (
                   <div key={project.id} className='project-card'>
-                    {project.imageUrl && (
+                    {project.image_url && (
                       <div className='project-card__image'>
                         <img
-                          src={project.imageUrl}
+                          src={project.image_url}
                           alt={project.title}
                           loading='lazy'
                         />
                         <div className='project-card__overlay'>
                           <div className='project-card__links'>
-                            {project.liveUrl && (
+                            {project.live_url && (
                               <a
-                                href={project.liveUrl}
+                                href={project.live_url}
                                 target='_blank'
                                 rel='noopener noreferrer'
                                 className='project-card__link project-card__link--live'
@@ -77,9 +77,9 @@ export default ({ projects = [] }: TabGroupProps) => {
                                 Live Demo
                               </a>
                             )}
-                            {project.githubUrl && (
+                            {project.github_url && (
                               <a
-                                href={project.githubUrl}
+                                href={project.github_url}
                                 target='_blank'
                                 rel='noopener noreferrer'
                                 className='project-card__link project-card__link--github'
