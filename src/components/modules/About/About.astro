@@ -7,108 +7,8 @@ import { getPageData } from '@database/request';
 
 const { data } = await getPageData('about');
 
-// Personal stats and timeline data
-const personalStats = {
-  codingYears: '4+',
-  projectsCompleted: 25,
-  languagesLearned: 12,
-  certifications: 3,
-  githubCommits: 1500,
-  linesOfCode: '50K+',
-};
-
-const timelineData = [
-  {
-    year: '2020',
-    title: 'Started Coding Journey',
-    description:
-      'Began learning web development with HTML, CSS, and JavaScript',
-    icon: '',
-    type: 'milestone',
-  },
-  {
-    year: '2021',
-    title: 'First React Project',
-    description:
-      'Built my first React application and fell in love with component-based architecture',
-    icon: '',
-    type: 'project',
-  },
-  {
-    year: '2022',
-    title: 'Full-Stack Development',
-    description: 'Expanded into backend development with Node.js and Laravel',
-    icon: '',
-    type: 'skill',
-  },
-  {
-    year: '2023',
-    title: 'TypeScript Mastery',
-    description:
-      'Adopted TypeScript for better code quality and developer experience',
-    icon: '',
-    type: 'skill',
-  },
-  {
-    year: '2024',
-    title: 'Modern Stack Focus',
-    description:
-      'Specialized in Next.js, React Query, and modern development practices',
-    icon: '',
-    type: 'current',
-  },
-];
-
-const achievements = [
-  {
-    title: 'AWS Certified',
-    description: 'Cloud Practitioner',
-    icon: '',
-    year: '2023',
-  },
-  {
-    title: 'React Expert',
-    description: 'Advanced React Patterns',
-    icon: '',
-    year: '2022',
-  },
-  {
-    title: 'Open Source',
-    description: 'Contributor to 5+ projects',
-    icon: '',
-    year: '2023',
-  },
-];
-
-const testimonials = [
-  {
-    name: 'Sarah Johnson',
-    role: 'Product Manager',
-    company: 'TechCorp',
-    content:
-      'Working with Domen was an absolute pleasure. His attention to detail and ability to translate complex requirements into elegant solutions is remarkable. The project was delivered on time and exceeded our expectations.',
-    rating: 5,
-    avatar: '',
-  },
-  {
-    name: 'Michael Chen',
-    role: 'Senior Developer',
-    company: 'StartupXYZ',
-    content:
-      "Domen's expertise in React and TypeScript is outstanding. He not only delivered high-quality code but also mentored our team on best practices. His communication skills and professionalism are top-notch.",
-    rating: 5,
-    avatar: '',
-  },
-  {
-    name: 'Emily Rodriguez',
-    role: 'Design Director',
-    company: 'CreativeStudio',
-    content:
-      "Collaborating with Domen was seamless. He understood our design vision perfectly and brought it to life with clean, performant code. His frontend skills are exceptional and he's a great team player.",
-    rating: 5,
-    avatar: '',
-  },
-];
+const stats = data?.data?.stats;
+const timeline = data?.data?.timeline;
 ---
 
 <Section id='about' title={data?.title ?? 'ABOUT'} decoration='code' stagger>
@@ -117,13 +17,7 @@ const testimonials = [
       'Passionate full-stack developer with 4+ years of experience building modern web applications. I love creating user-friendly interfaces and robust backend systems.'}
   />
 
-  <AboutTabGroup
-    client:load
-    stats={personalStats}
-    timeline={timelineData}
-    achievements={achievements}
-    testimonials={testimonials}
-  />
+  <AboutTabGroup client:load stats={stats} timeline={timeline} />
 
   <ContactDisplay />
 </Section>

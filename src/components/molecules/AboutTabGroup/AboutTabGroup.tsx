@@ -3,12 +3,9 @@ import { useEffect, useState } from 'react';
 import './AboutTabGroup.scss';
 
 interface PersonalStats {
-  codingYears: string;
-  projectsCompleted: number;
-  languagesLearned: number;
-  certifications: number;
-  githubCommits: number;
-  linesOfCode: string;
+  years: string;
+  projects: number;
+  tools: number;
 }
 
 interface TimelineItem {
@@ -18,38 +15,16 @@ interface TimelineItem {
   type: string;
 }
 
-interface Achievement {
-  title: string;
-  description: string;
-  year: string;
-}
-
-interface Testimonial {
-  name: string;
-  role: string;
-  company: string;
-  content: string;
-  rating: number;
-  avatar: string;
-}
-
 interface AboutTabGroupProps {
   stats?: PersonalStats;
   timeline?: TimelineItem[];
-  achievements?: Achievement[];
-  testimonials?: Testimonial[];
 }
 
-export default ({
-  stats,
-  timeline,
-  achievements: _achievements,
-  testimonials: _testimonials,
-}: AboutTabGroupProps) => {
+export default ({ stats, timeline }: AboutTabGroupProps) => {
   const [animatedStats, setAnimatedStats] = useState<PersonalStats>({
-    codingYears: '0',
-    projectsCompleted: 0,
-    languagesLearned: 0,
+    years: '0',
+    projects: 0,
+    tools: 0,
   });
 
   useEffect(() => {
@@ -74,15 +49,15 @@ export default ({
       };
 
       setTimeout(() => {
-        animateCounter(stats.projectsCompleted, val =>
-          setAnimatedStats(prev => ({ ...prev, projectsCompleted: val }))
+        animateCounter(stats.projects, val =>
+          setAnimatedStats(prev => ({ ...prev, projects: val }))
         );
-        animateCounter(stats.languagesLearned, val =>
-          setAnimatedStats(prev => ({ ...prev, languagesLearned: val }))
+        animateCounter(stats.tools, val =>
+          setAnimatedStats(prev => ({ ...prev, tools: val }))
         );
         setAnimatedStats(prev => ({
           ...prev,
-          codingYears: stats.codingYears,
+          years: stats.years,
         }));
       }, 500);
     }
@@ -132,25 +107,19 @@ export default ({
         <TabPanels className='about-tab-group__body'>
           <TabPanel className='about-tab-group__content'>
             <div className='stats-grid'>
-              <StatCard
-                label='Years Coding'
-                value={animatedStats.codingYears}
-              />
+              <StatCard label='Years Coding' value={animatedStats.years} />
               <StatCard
                 label='Projects Completed'
-                value={animatedStats.projectsCompleted}
+                value={animatedStats.projects}
               />
-              <StatCard
-                label='Languages Learned'
-                value={animatedStats.languagesLearned}
-              />
+              <StatCard label='Languages Learned' value={animatedStats.tools} />
             </div>
           </TabPanel>
 
           <TabPanel className='about-tab-group__content'>
             <div className='timeline'>
-              {timeline?.map(item => (
-                <TimelineItem key={item.year} item={item} />
+              {timeline?.map((item, index) => (
+                <TimelineItem key={`${index}-${item.year}`} item={item} />
               ))}
             </div>
           </TabPanel>

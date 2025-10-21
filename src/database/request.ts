@@ -14,7 +14,7 @@ const getPageData = async (key: string) => {
   return { data, error };
 };
 
-const getData = async (table: string, scope: string) => {
+const getData = async (table: string, scope?: string) => {
   const { data, error } = await supabase
     .from(table)
     .select()
@@ -28,4 +28,4 @@ const getData = async (table: string, scope: string) => {
   return { data, error };
 };
 
-export { getPageData, getData };
+export { getData, getPageData };
