@@ -8,10 +8,6 @@ import { changeTheme } from '@utils/layout.utils';
 
 export const initHeader = () => {
   const header = document.querySelector('.header') as HTMLElement;
-  const nav = document.querySelector('.nav') as HTMLElement;
-  const mobileToggle = document.querySelector(
-    '.header__mobile-toggle'
-  ) as HTMLElement;
   const themeToggle = document.querySelector(
     '.header__theme-toggle'
   ) as HTMLElement;
@@ -23,25 +19,10 @@ export const initHeader = () => {
   ) as HTMLElement;
   const navLinks = document.querySelectorAll('.nav__link');
 
-  let isMenuOpen = false;
   let currentTheme = 'dark';
   let currentLang = getLanguage();
   let programmaticScroll = false;
   let scrollEndTimer: number | undefined;
-
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => {
-      isMenuOpen = !isMenuOpen;
-      nav.classList.toggle('nav--open', isMenuOpen);
-
-      const hamburger = mobileToggle.querySelector(
-        '.header__hamburger'
-      ) as HTMLElement;
-      if (hamburger) {
-        hamburger.classList.toggle('header__hamburger--open', isMenuOpen);
-      }
-    });
-  }
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
@@ -88,7 +69,7 @@ export const initHeader = () => {
   const updateActiveSection = () => {
     if (programmaticScroll) return;
     const sections = document.querySelectorAll('section[id]');
-    const scrollPos = window.scrollY + 100;
+    const scrollPos = window.scrollY + 300;
 
     sections.forEach(section => {
       const sectionTop = (section as HTMLElement).offsetTop;
@@ -146,17 +127,6 @@ export const initHeader = () => {
             programmaticScroll = false;
             updateActiveSection();
           }, 250);
-
-          if (isMenuOpen) {
-            isMenuOpen = false;
-            nav?.classList.remove('nav--open');
-            const hamburger = mobileToggle?.querySelector(
-              '.header__hamburger'
-            ) as HTMLElement;
-            if (hamburger) {
-              hamburger.classList.remove('header__hamburger--open');
-            }
-          }
         }
       }
     });
@@ -174,27 +144,6 @@ export const initHeader = () => {
       updateActiveSection();
     }
     updateHeaderScroll();
-  });
-
-  document.addEventListener('click', () => {
-    // if (
-    //   !nav.contains(e.target as Node) &&
-    //   !mobileToggle.contains(e.target as Node)
-    // ) {
-    // nav?.classList.remove('nav--open');
-    const hamburger = mobileToggle?.querySelector(
-      '.header__hamburger'
-    ) as HTMLElement;
-    if (hamburger) {
-      if (hamburger.classList.contains('header__hamburger--closed')) {
-        hamburger.classList.remove('header__hamburger--closed');
-        hamburger.classList.add('header__hamburger--open');
-      } else {
-        hamburger.classList.remove('header__hamburger--open');
-        hamburger.classList.add('header__hamburger--closed');
-      }
-    }
-    // }
   });
 
   updateProgress();

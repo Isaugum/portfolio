@@ -1,26 +1,21 @@
 ---
 import Anchor from '@components/atoms/Anchor/Anchor.astro';
+import MainLogo from './public/logo.svg';
 import './header.scss';
 import { NAV_ELEMENTS } from './header.content';
 ---
 
-<header class='header hidden'>
+<header class='header'>
   <!-- Progress indicator -->
   <div class='header__progress'>
     <div class='header__progress-bar'></div>
   </div>
 
-  <!-- Mobile menu toggle -->
-  <button class='header__mobile-toggle' aria-label='Toggle navigation menu'>
-    <span class='header__hamburger header__hamburger--closed'>
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-  </button>
-
   <!-- Navigation -->
   <nav class='nav'>
+    <a href='#'>
+      <MainLogo class='header__logo' />
+    </a>
     {
       NAV_ELEMENTS.map((elem: { text: string; href: string }) => {
         return (

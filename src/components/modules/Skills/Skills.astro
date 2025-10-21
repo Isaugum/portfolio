@@ -1,11 +1,12 @@
 ---
 import Section from '@components/atoms/Section/Section.astro';
 import SkillsTabGroup from '@components/molecules/SkillsTabGroup/SkillsTabGroup.tsx';
-import { getPageData } from '@database/request';
+import { getPageData, getSkills } from '@database/request';
 
 const { data } = await getPageData('skills');
+const { data: skillsData } = await getSkills();
 
-const skillsData = data?.data?.skills ?? [];
+console.log(skillsData);
 ---
 
 <Section
@@ -16,5 +17,5 @@ const skillsData = data?.data?.skills ?? [];
   decoration='tech'
   stagger
 >
-  <SkillsTabGroup client:load skills={skillsData} />
+  {skillsData && <SkillsTabGroup client:load skills={skillsData} />}
 </Section>

@@ -7,10 +7,6 @@ const getPageData = async (key: string) => {
     .eq('slug', key)
     .single();
 
-  if (error) {
-    console.error(error);
-  }
-
   return { data, error };
 };
 
@@ -21,11 +17,20 @@ const getData = async (table: string, scope?: string) => {
     .eq('scope', scope)
     .order('order', { ascending: true });
 
-  if (error) {
-    console.error(error);
-  }
-
   return { data, error };
 };
 
-export { getData, getPageData };
+const getSkills = async () => {
+  const { data, error } = await supabase.from('skills').select();
+
+  const groupedData = data?.reduce((acc, skill) => {
+    const { category, ...rest } = skill;
+    if (!acc[category]) acc[category] = [];
+    acc[category].push(rest);
+    return acc;
+  }, {});
+
+  return { data: groupedData, error };
+};
+
+export { getData, getPageData, getSkills };

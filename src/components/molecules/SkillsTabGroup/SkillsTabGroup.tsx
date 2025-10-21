@@ -58,13 +58,12 @@ export default ({ skills }: SkillsTabGroupProps) => {
           <div className='skill-item__info'>
             <h4 className='skill-item__name'>{skill.name}</h4>
             <div className='skill-item__stats'>
-              <span className='skill-item__years'>{skill.years} years</span>
+              <span className='skill-item__years'>{skill.years}+ years</span>
               <span className='skill-item__projects'>
                 {skill.projects} projects
               </span>
             </div>
           </div>
-          <div className='skill-item__level'>{skill.level}%</div>
         </div>
 
         <div className='skill-item__bar'>
