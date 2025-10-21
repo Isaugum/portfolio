@@ -1,70 +1,18 @@
 ---
 import Section from '@components/atoms/Section/Section.astro';
 import SkillsTabGroup from '@components/molecules/SkillsTabGroup/SkillsTabGroup.tsx';
-// import { getPageData } from '@database/request';
+import { getPageData } from '@database/request';
 
-// const { data } = await getPageData('skills');
+const { data } = await getPageData('skills');
 
-// Skills data with proficiency levels and categories
-const skillsData = {
-  frontend: [
-    { name: 'React', level: 95, years: '4+', projects: 15, icon: 'react' },
-    {
-      name: 'TypeScript',
-      level: 90,
-      years: '3+',
-      projects: 12,
-      icon: 'typescript',
-    },
-    { name: 'Next.js', level: 85, years: '2+', projects: 8, icon: 'nextdotjs' },
-    {
-      name: 'Tailwind CSS',
-      level: 88,
-      years: '3+',
-      projects: 10,
-      icon: 'tailwindcss',
-    },
-    { name: 'Sass/SCSS', level: 92, years: '4+', projects: 20, icon: 'sass' },
-    {
-      name: 'React Query',
-      level: 80,
-      years: '2+',
-      projects: 6,
-      icon: 'reactquery',
-    },
-  ],
-  backend: [
-    {
-      name: 'Node.js',
-      level: 85,
-      years: '3+',
-      projects: 10,
-      icon: 'nodedotjs',
-    },
-    { name: 'Laravel', level: 90, years: '4+', projects: 12, icon: 'laravel' },
-    { name: 'NestJS', level: 75, years: '1+', projects: 4, icon: 'nestjs' },
-    { name: 'MySQL', level: 88, years: '4+', projects: 15, icon: 'mysql' },
-    { name: 'Supabase', level: 82, years: '2+', projects: 8, icon: 'supabase' },
-  ],
-  tools: [
-    { name: 'Git', level: 90, years: '4+', projects: 'All', icon: 'git' },
-    { name: 'Docker', level: 70, years: '1+', projects: 5, icon: 'docker' },
-    { name: 'Figma', level: 85, years: '3+', projects: 8, icon: 'figma' },
-    {
-      name: 'VS Code',
-      level: 95,
-      years: '4+',
-      projects: 'All',
-      icon: 'vscode',
-    },
-  ],
-};
+const skillsData = data?.data?.skills ?? [];
 ---
 
 <Section
   id='skills'
-  title='TECHNOLOGY AND SKILLS'
-  subtitle="I specialize in full-stack development with expertise in modern web technologies. Here's a breakdown of my technical skills and proficiency levels across different categories."
+  title={data?.title ?? 'TECHNOLOGY AND SKILLS'}
+  subtitle={data?.text ??
+    "I specialize in full-stack development with expertise in modern web technologies. Here's a breakdown of my technical skills and proficiency levels across different categories."}
   decoration='tech'
   stagger
 >
