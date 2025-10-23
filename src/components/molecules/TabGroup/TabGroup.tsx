@@ -46,13 +46,8 @@ export default ({ projects = [] }: TabGroupProps) => {
                 )
                 .map(project => (
                   <div key={project.id} className='project-card'>
-                    {project.image_url && (
-                      <div className='project-card__image'>
-                        <img
-                          src={project.image_url}
-                          alt={project.title}
-                          loading='lazy'
-                        />
+                    <div className='project-card__content'>
+                      {(project?.live_url || project?.github_url) && (
                         <div className='project-card__overlay'>
                           <div className='project-card__links'>
                             {project.live_url && (
@@ -99,10 +94,7 @@ export default ({ projects = [] }: TabGroupProps) => {
                             )}
                           </div>
                         </div>
-                      </div>
-                    )}
-
-                    <div className='project-card__content'>
+                      )}
                       <h3 className='project-card__title'>{project.title}</h3>
                       <p className='project-card__description'>
                         {project.description}
