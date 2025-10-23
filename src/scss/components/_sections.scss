@@ -1,10 +1,7 @@
 @use '../layout/breakpoints' as br;
 @use '../core/mixins' as *;
 
-// Reusable section styles
-
 .section {
-  // Base section styles
   &--main {
     text-shadow: none;
     position: relative;
@@ -13,7 +10,6 @@
     scroll-margin-top: 8vh;
   }
 
-  // Section title
   &__title {
     width: 100%;
 
@@ -23,7 +19,6 @@
     text-align: center;
   }
 
-  // Section subtitle/description
   &__subtitle {
     padding: 1rem 2rem;
     text-align: center;
@@ -37,8 +32,9 @@
     }
   }
 
-  // Section content wrapper
   &__content {
+    max-width: 1280px;
+
     @include br.min-width(md) {
       padding: 2rem 4rem;
     }
@@ -48,7 +44,6 @@
     }
   }
 
-  // Section with grid layout
   &--grid {
     display: grid;
     gap: 2rem;
@@ -100,7 +95,6 @@
     }
   }
 
-  // Project cards specific animation
   .projects-grid .project-card {
     animation: fadeInUp 0.6s ease-out forwards;
 
@@ -125,7 +119,6 @@
   }
 }
 
-// Skills specific styles
 .skills__visual {
   margin-top: 3rem;
 }

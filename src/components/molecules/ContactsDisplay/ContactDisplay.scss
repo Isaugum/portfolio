@@ -1,7 +1,7 @@
 @use '@layout/breakpoints' as br;
 
 .contact-content {
-  width: 100%;
+  flex-grow: 1;
 
   padding: 3rem 1rem;
   margin-top: 4rem;
@@ -11,6 +11,10 @@
   box-shadow: 0 0 3rem 0 var(--color-accent-darker);
 
   backdrop-filter: blur(0.5rem);
+
+  @include br.min-width(lg) {
+    min-width: 1000px;
+  }
 
   &__title {
     width: 100%;

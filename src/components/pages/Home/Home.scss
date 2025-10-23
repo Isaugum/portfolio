@@ -44,6 +44,8 @@
       margin-top: 7rem;
 
       color: var(--color-text);
+
+      animation: blink 1s steps(1, start) infinite;
     }
   }
 }

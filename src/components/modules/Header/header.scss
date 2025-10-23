@@ -123,7 +123,7 @@
 
         border-top: 8px solid transparent;
         border-bottom: 8px solid transparent;
-        border-left: 8px solid var(--color-accent);
+        border-left: 8px solid;
         border-right: 0 solid transparent;
 
         opacity: 0;
@@ -134,8 +134,8 @@
       }
 
       &:hover {
-        background: var(--color-accent-10);
-        color: var(--color-accent);
+        // background: var(--color-accent-10);
+        // color: var(--color-accent);
 
         &::before {
           opacity: 1;
@@ -144,8 +144,8 @@
       }
 
       &.nav__link--active {
-        background: var(--color-accent-20);
-        color: var(--color-accent);
+        // background: var(--color-accent-20);
+        // color: var(--color-accent);
         font-weight: bold;
 
         &::before {
