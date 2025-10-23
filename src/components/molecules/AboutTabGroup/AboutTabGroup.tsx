@@ -112,7 +112,7 @@ export default ({ stats, timeline }: AboutTabGroupProps) => {
                 label='Projects Completed'
                 value={animatedStats.projects}
               />
-              <StatCard label='Languages Learned' value={animatedStats.tools} />
+              <StatCard label='Tools used' value={animatedStats.tools} />
             </div>
           </TabPanel>
 

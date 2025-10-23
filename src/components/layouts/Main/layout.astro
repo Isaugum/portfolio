@@ -2,6 +2,7 @@
 import Footer from '@components/modules/Footer/footer.astro';
 import Header from '@components/modules/Header/header.astro';
 import AnimatedBackground from '@components/molecules/AnimatedBackground/AnimatedBackground.tsx';
+import MainLogo from '@public/logo_animated.svg';
 import '@styles/main.scss';
 import './layout.scss';
 const { title } = Astro.props;
@@ -17,10 +18,26 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <body>
+  <body class='blocker'>
+    <div class='layout__load-bg'>
+      <MainLogo class='layout__logo' />
+    </div>
+
     <AnimatedBackground client:load />
     <Header />
     <slot />
     <Footer />
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const blocker = document.querySelector('.blocker');
+          if (blocker) {
+            blocker.classList.remove('blocker');
+            blocker.classList.add('scroll');
+          }
+        }, 4000);
+      });
+    </script>
   </body>
 </html>
