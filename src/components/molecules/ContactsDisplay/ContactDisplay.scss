@@ -12,10 +12,6 @@
 
   backdrop-filter: blur(0.5rem);
 
-  @include br.min-width(lg) {
-    min-width: 1000px;
-  }
-
   &__title {
     width: 100%;
     text-align: center;

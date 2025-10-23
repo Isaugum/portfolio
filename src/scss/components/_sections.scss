@@ -33,14 +33,12 @@
   }
 
   &__content {
-    max-width: 1280px;
-
     @include br.min-width(md) {
       padding: 2rem 4rem;
     }
 
     @include br.min-width(lg) {
-      padding: 2rem 6rem;
+      padding: 2rem 12rem;
     }
   }
 
