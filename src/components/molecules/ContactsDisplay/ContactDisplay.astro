@@ -1,40 +1,37 @@
 ---
-import NextjsIcon from '@public/icons/contact/email.svg';
-import ReactIcon from '@public/icons/contact/github.svg';
-import ReactQueryIcon from '@public/icons/contact/linkedin.svg';
+import { getPageData } from '@database/request';
+import Icon from '../../atoms/Icon/Icon.astro';
 import './ContactDisplay.scss';
+
+const { data } = await getPageData('contact');
 ---
 
 <div class='contact-content container--padded'>
-  <h3 class='contact-content__title'>Get In Touch</h3>
+  <h3 class='contact-content__title'>{data?.title ?? 'Get in touch'}</h3>
   <p class='contact-content__subtitle'>
-    Have a project in mind or want to collaborate? I'd love to hear from you!
+    {
+      data?.text ??
+        "Have a project in mind or want to collaborate? I'd love to hear from you!"
+    }
   </p>
 
   <div class='contact-content__social-section'>
     <div class='contact-content__container'>
-      <a
-        href='https://github.com/yourusername'
-        target='_blank'
-        rel='noopener noreferrer'
-        class='contact-content__link'
-      >
-        <ReactIcon class='contact-content__icon' />
-        <span>GitHub</span>
-      </a>
-      <a
-        href='https://linkedin.com/in/yourusername'
-        target='_blank'
-        rel='noopener noreferrer'
-        class='contact-content__link'
-      >
-        <ReactQueryIcon class='contact-content__icon' />
-        <span>LinkedIn</span>
-      </a>
-      <a href='mailto:your.email@example.com' class='contact-content__link'>
-        <NextjsIcon class='contact-content__icon' />
-        <span>Email</span>
-      </a>
+      {
+        data?.data.map(item => {
+          return (
+            <a
+              href={item?.href}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='contact-content__link'
+            >
+              <Icon modifier={item?.icon} className='contact-content__icon' />
+              <span>{item?.text}</span>
+            </a>
+          );
+        })
+      }
     </div>
   </div>
 </div>

@@ -1,0 +1,6 @@
+---
+import '@style_components/_icons.scss';
+const { modifier, className } = Astro.props;
+---
+
+<i class={`icon icon--${modifier} ${className ?? ''}`}></i>

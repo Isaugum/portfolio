@@ -8,6 +8,8 @@
     overflow: hidden;
 
     scroll-margin-top: 8vh;
+
+    backdrop-filter: blur(0.3rem);
   }
 
   &__title {

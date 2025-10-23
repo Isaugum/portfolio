@@ -1,0 +1,51 @@
+@use 'icon_variables' as *;
+
+.icon {
+  display: block;
+  position: relative;
+
+  // Common pseudo-element styles
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: currentColor; // Mask uses this
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+
+  // GitHub icon
+  &--github {
+    height: 4rem;
+
+    &::before {
+      -webkit-mask-image: url('data:image/svg+xml,#{$github}');
+      mask-image: url('data:image/svg+xml,#{$github}');
+    }
+  }
+
+  // LinkedIn icon
+  &--linkedin {
+    height: 4rem;
+
+    &::before {
+      -webkit-mask-image: url('data:image/svg+xml,#{$linkedin}');
+      mask-image: url('data:image/svg+xml,#{$linkedin}');
+    }
+  }
+
+  // Email icon
+  &--email {
+    height: 4rem;
+
+    &::before {
+      -webkit-mask-image: url('data:image/svg+xml,#{$email}');
+      mask-image: url('data:image/svg+xml,#{$email}');
+    }
+  }
+}
