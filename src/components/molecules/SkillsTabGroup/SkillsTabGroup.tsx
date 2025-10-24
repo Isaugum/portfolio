@@ -75,13 +75,6 @@ export default ({ skills }: SkillsTabGroupProps) => {
   }, [enrichedSkills]);
 
   const SkillBar = ({ skill }: { skill: Skill }) => {
-    // const [isVisible, setIsVisible] = useState(false);
-
-    // useEffect(() => {
-    //   const timer = setTimeout(() => setIsVisible(true), 200);
-    //   return () => clearTimeout(timer);
-    // }, []);
-
     return (
       <div className='skill-item'>
         <div className='skill-item__header'>
@@ -95,13 +88,6 @@ export default ({ skills }: SkillsTabGroupProps) => {
             </div>
           </div>
         </div>
-
-        {/* <div className='skill-item__bar'>
-          <div
-            className={`skill-item__progress ${isVisible ? 'skill-item__progress--animated' : ''}`}
-            style={{ width: isVisible ? `${skill.level}%` : '0%' }}
-          />
-        </div> */}
       </div>
     );
   };
@@ -112,10 +98,6 @@ export default ({ skills }: SkillsTabGroupProps) => {
         <TabList className='skills-tab-group__header'>
           {categories.map(category => (
             <Tab key={category.key} className='skills-tab-group__btn'>
-              <span
-                className='skills-tab-group__icon'
-                aria-hidden='true'
-              ></span>
               {category.label}
             </Tab>
           ))}

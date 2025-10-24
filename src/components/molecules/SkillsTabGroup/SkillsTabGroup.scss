@@ -7,6 +7,7 @@
   &__header {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 2rem;
     border-bottom: 1px solid rgba(0, 255, 170, 0.2);
@@ -49,14 +50,6 @@
       padding: 0.5rem 1rem;
       font-size: 0.85rem;
     }
-  }
-
-  &__icon {
-    font-size: 1.1rem;
-  }
-
-  &__body {
-    // min-height: 300px;
   }
 
   &__content {
@@ -163,7 +156,6 @@
     padding: 1rem;
 
     &__header {
-      flex-direction: column;
       gap: 0.75rem;
     }
 
