@@ -1,9 +1,10 @@
 ---
-import { getPageData } from '@database/request';
+import { getContactsData, getPageData } from '@database/request';
 import Icon from '../../atoms/Icon/Icon.astro';
 import './ContactDisplay.scss';
 
 const { data } = await getPageData('contact');
+const { data: contacts } = await getContactsData();
 ---
 
 <div class='contact-content container--padded'>
@@ -18,16 +19,17 @@ const { data } = await getPageData('contact');
   <div class='contact-content__social-section'>
     <div class='contact-content__container'>
       {
-        data?.data.map(item => {
+        contacts?.map(item => {
           return (
             <a
               href={item?.href}
               target='_blank'
               rel='noopener noreferrer'
               class='contact-content__link'
+              type={item?.name}
             >
-              <Icon modifier={item?.icon} className='contact-content__icon' />
-              <span>{item?.text}</span>
+              <Icon modifier={item?.name} className='contact-content__icon' />
+              <span>{item?.title}</span>
             </a>
           );
         })
@@ -35,3 +37,16 @@ const { data } = await getPageData('contact');
     </div>
   </div>
 </div>
+
+<script>
+  import { showToast } from '../../providers/ToastProvider';
+
+  const emailBtn = document.querySelector("[type='email']");
+  emailBtn?.addEventListener('click', e => {
+    e.preventDefault();
+    const target = e.currentTarget as HTMLAnchorElement;
+    const href = target.getAttribute('href');
+    navigator.clipboard.writeText(href?.replace('mailto:', '') || '');
+    showToast('Email copied to clipboard!');
+  });
+</script>

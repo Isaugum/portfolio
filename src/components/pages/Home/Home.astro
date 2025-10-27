@@ -1,9 +1,11 @@
 ---
 import './Home.scss';
 import Anchor from '@components/atoms/Anchor/Anchor.astro';
-import { getPageData } from '../../../database/request';
+import { getContactsData, getPageData } from '@database/request';
+import Icon from '../../atoms/Icon/Icon.astro';
 
 const { data } = await getPageData('home');
+const { data: contacts } = await getContactsData();
 ---
 
 <section id='home' class='container--main'>
@@ -15,6 +17,23 @@ const { data } = await getPageData('home');
       <h2 class='hero__subtitle text--h3 flicker-animation'>
         {data.subtitle}
       </h2>
+      <div class='hero__contact'>
+        {
+          contacts?.map(item => {
+            return (
+              <a
+                href={item?.href}
+                target='_blank'
+                rel='noopener noreferrer'
+                class='hero__contact--link'
+                type={`hero-${item?.name}`}
+              >
+                <Icon modifier={item?.name} className='hero__contact--icon' />
+              </a>
+            );
+          })
+        }
+      </div>
       <Anchor
         href='#about'
         className='hero__cta text--general blink-animation selected flicker'
@@ -27,32 +46,28 @@ const { data } = await getPageData('home');
 </section>
 
 <script>
+  import { showToast } from '../../providers/ToastProvider';
+
   window.addEventListener('DOMContentLoaded', () => {
     const hero = document.getElementById('home');
-    hero?.addEventListener('click', () => {
-      // hero.classList.add('fade-out-animation');
-      setTimeout(() => {
-        window.location.href = '#about';
-      }, 100);
+    hero?.addEventListener('click', e => {
+      const target = e.target as HTMLElement;
+      if (!target.classList.contains('hero__contact--icon')) {
+        setTimeout(() => {
+          window.location.href = '#about';
+        }, 100);
+      }
     });
 
-    // const observer = new IntersectionObserver(
-    //     (entries) => {
-    //         entries.forEach((entry) => {
-    //             if (entry.isIntersecting) {
-    //                 entry.target.classList.add('fade-in-animation');
-    //                 entry.target.classList.remove('fade-out-animation');
-    //             } else {
-    //                 entry.target.classList.remove('fade-in-animation');
-    //                 entry.target.classList.add('fade-out-animation');
-    //             }
-    //         });
-    //     },
-    //     { threshold: 0.2 }
-    // );
+    const emailBtn = document.querySelector("[type='hero-email']");
+    emailBtn?.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    // if(hero) {
-    //     observer.observe(hero);
-    // }
+      const target = e.currentTarget as HTMLAnchorElement;
+      const href = target.getAttribute('href');
+      navigator.clipboard.writeText(href?.replace('mailto:', '') || '');
+      showToast('Email copied to clipboard!');
+    });
   });
 </script>

@@ -40,6 +40,30 @@
       color: var(--color-text);
     }
 
+    &__contact {
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin-top: 1rem;
+
+      &--icon {
+        height: 1.7rem;
+        width: 1.7rem;
+
+        margin: 0.5rem;
+        color: var(--color-accent);
+
+        transition-duration: 300ms;
+
+        &:hover {
+          color: var(--color-accent-darker);
+        }
+      }
+    }
+
     &__cta {
       margin-top: 7rem;
 
