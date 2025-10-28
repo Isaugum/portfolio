@@ -1,56 +1,56 @@
-import {
-  applyHtmlLang,
-  getLanguage,
-  setLanguage,
-  translateNav,
-} from '@utils/i18n';
-import { changeTheme } from '@utils/layout.utils';
+// import {
+//   applyHtmlLang,
+//   getLanguage,
+//   setLanguage,
+//   translateNav,
+// } from '@utils/i18n';
+// import { changeTheme } from '@utils/layout.utils';
 
 export const initHeader = () => {
   const header = document.querySelector('.header') as HTMLElement;
-  const themeToggle = document.querySelector(
-    '.header__theme-toggle'
-  ) as HTMLElement;
+  // const themeToggle = document.querySelector(
+  //   '.header__theme-toggle'
+  // ) as HTMLElement;
   const progressBar = document.querySelector(
     '.header__progress-bar'
   ) as HTMLElement;
-  const langToggle = document.querySelector(
-    '.header__lang-toggle'
-  ) as HTMLElement;
+  // const langToggle = document.querySelector(
+  //   '.header__lang-toggle'
+  // ) as HTMLElement;
   const navLinks = document.querySelectorAll('.nav__link');
 
-  let currentTheme = 'dark';
-  let currentLang = getLanguage();
+  // let currentTheme = 'dark';
+  // let currentLang = getLanguage();
   let programmaticScroll = false;
   let scrollEndTimer: number | undefined;
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      changeTheme();
-    });
-  }
+  // if (themeToggle) {
+  //   themeToggle.addEventListener('click', () => {
+  //     currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  //     changeTheme();
+  //   });
+  // }
 
-  const updateNavLanguage = () => {
-    const links = document.querySelectorAll('.nav__link');
-    links.forEach(link => {
-      const href = (link as HTMLAnchorElement).getAttribute('href') || '';
-      const key = href.replace('#', '');
-      const label = translateNav(key);
-      if (label) link.textContent = label.toUpperCase();
-    });
-  };
+  // const updateNavLanguage = () => {
+  //   const links = document.querySelectorAll('.nav__link');
+  //   links.forEach(link => {
+  //     const href = (link as HTMLAnchorElement).getAttribute('href') || '';
+  //     const key = href.replace('#', '');
+  //     const label = translateNav(key);
+  //     if (label) link.textContent = label.toUpperCase();
+  //   });
+  // };
 
-  if (langToggle) {
-    langToggle.addEventListener('click', () => {
-      currentLang = currentLang === 'en' ? 'sl' : 'en';
-      setLanguage(currentLang);
-      applyHtmlLang();
-      (langToggle as HTMLElement).textContent = currentLang.toUpperCase();
-      updateNavLanguage();
-    });
-    (langToggle as HTMLElement).textContent = currentLang.toUpperCase();
-  }
+  // if (langToggle) {
+  //   langToggle.addEventListener('click', () => {
+  //     currentLang = currentLang === 'en' ? 'sl' : 'en';
+  //     setLanguage(currentLang);
+  //     applyHtmlLang();
+  //     (langToggle as HTMLElement).textContent = currentLang.toUpperCase();
+  //     updateNavLanguage();
+  //   });
+  //   (langToggle as HTMLElement).textContent = currentLang.toUpperCase();
+  // }
 
   const updateProgress = () => {
     const scrollTop = window.pageYOffset;
@@ -166,6 +166,6 @@ export const initHeader = () => {
   updateProgress();
   updateActiveSection();
   updateHeaderScroll();
-  applyHtmlLang();
-  updateNavLanguage();
+  // applyHtmlLang();
+  // updateNavLanguage();
 };
